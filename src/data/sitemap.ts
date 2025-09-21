@@ -16,7 +16,6 @@ export const SITEMAP_URLS: Record<string, string[]> = {
     `${BASE}/enhanced-jobs`,
     `${BASE}/enhanced-post-job`,
     `${BASE}/contact`,
-    `${BASE}/admin`,
   ],
 
   // Job categories (from your SEO job service)

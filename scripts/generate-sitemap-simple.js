@@ -21,7 +21,6 @@ const SITEMAP_URLS = {
     `${BASE}/enhanced-jobs`,
     `${BASE}/enhanced-post-job`,
     `${BASE}/contact`,
-    `${BASE}/admin`,
   ],
 
   'categories': [

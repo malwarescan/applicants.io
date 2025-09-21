@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import JobDetail from './pages/JobDetail';
 import PostJob from './pages/PostJob';
 import Contact from './pages/Contact';
-import Admin from './pages/Admin';
 import CategoryPage from './pages/CategoryPage';
 import LocationPage from './pages/LocationPage';
 import CompanyPage from './pages/CompanyPage';
@@ -38,7 +37,6 @@ export function App() {
             <Route path="/jobs/company/:company" element={<CompanyPage />} />
             <Route path="/post-job" element={<PostJob />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/admin" element={<Admin />} />
             {/* Enhanced job flow routes */}
             <Route path="/enhanced-jobs" element={<EnhancedJobSearchPage />} />
             <Route path="/enhanced-post-job" element={<EnhancedPostJobPage />} />

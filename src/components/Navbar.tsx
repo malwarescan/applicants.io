@@ -79,9 +79,6 @@ const Navbar = () => {
                 <Link to="/contact" className="text-blue-600 hover:underline">
                   Contact
                 </Link>
-                <Link to="/admin" className="text-blue-600 hover:underline">
-                  Admin
-                </Link>
               </div>
             </div>
           </nav>
