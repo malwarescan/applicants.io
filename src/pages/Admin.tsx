@@ -1,16 +1,44 @@
 import React from 'react';
 import JobIntegrationPanel from '../components/JobIntegrationPanel';
-import { downloadSitemap, downloadRobotsTxt, generateSitemapEntries } from '../utils/sitemapGenerator';
+import { generateSitemapIndex, SITEMAP_URLS } from '../data/sitemap';
 
 const Admin = () => {
-  const sitemapEntries = generateSitemapEntries();
+  const sitemapEntries = Object.keys(SITEMAP_URLS);
   
   const handleDownloadSitemap = () => {
-    downloadSitemap();
+    // Generate sitemap index
+    const sitemapXml = generateSitemapIndex();
+    const blob = new Blob([sitemapXml], { type: 'application/xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'sitemap.xml';
+    a.click();
+    URL.revokeObjectURL(url);
   };
   
   const handleDownloadRobots = () => {
-    downloadRobotsTxt();
+    // Generate robots.txt content
+    const robotsContent = `User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://applicants.io/sitemap.xml
+Sitemap: https://applicants.io/sitemaps/main.xml
+Sitemap: https://applicants.io/sitemaps/categories.xml
+Sitemap: https://applicants.io/sitemaps/locations.xml
+Sitemap: https://applicants.io/sitemaps/category-location.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1`;
+    
+    const blob = new Blob([robotsContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'robots.txt';
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   return (

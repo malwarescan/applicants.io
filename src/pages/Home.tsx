@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import JobListing from '../components/JobListing';
 import FilterSection from '../components/FilterSection';
@@ -38,7 +38,7 @@ const Home = () => {
         ? `$${seoJob.salaryMin.toLocaleString()} - $${seoJob.salaryMax.toLocaleString()} per year`
         : undefined,
       description: seoJob.description,
-      contactEmail: seoJob.contactEmail,
+      contactEmail: seoJob.contactEmail || 'jobs@applicants.io',
       contactPhone: seoJob.contactPhone
     }));
     

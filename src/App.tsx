@@ -13,6 +13,9 @@ import EnhancedJobSearchPage from './pages/EnhancedJobSearch';
 import EnhancedPostJobPage from './pages/EnhancedPostJob';
 import EnhancedJobDetailPage from './pages/EnhancedJobDetail';
 import SEOJobCategoryPage from './pages/SEOJobCategoryPage';
+import SitemapIndex from './pages/SitemapIndex';
+import SitemapChunk from './pages/SitemapChunk';
+
 export function App() {
   return <div className="min-h-screen bg-white">
       <BrowserRouter>
@@ -40,6 +43,10 @@ export function App() {
             <Route path="/enhanced-jobs" element={<EnhancedJobSearchPage />} />
             <Route path="/enhanced-post-job" element={<EnhancedPostJobPage />} />
             <Route path="/enhanced-jobs/:id" element={<EnhancedJobDetailPage />} />
+            {/* Sitemap routes */}
+            <Route path="/sitemap" element={<SitemapIndex />} />
+            <Route path="/sitemap.xml" element={<SitemapIndex />} />
+            <Route path="/sitemaps/:chunkId.xml" element={<SitemapChunk />} />
           </Routes>
         </div>
       </BrowserRouter>

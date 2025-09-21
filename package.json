@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "npx vite",
-    "build": "npx vite build",
+    "build": "npx vite build && node scripts/generate-sitemap-simple.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "preview": "npx vite preview"
+    "preview": "npx vite preview",
+    "generate-sitemap": "node scripts/generate-sitemap-simple.js"
   },
   "dependencies": {
     "react": "^18.3.1",

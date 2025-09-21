@@ -1,13 +1,57 @@
-import fs from 'fs';
-import path from 'path';
-import { generateSitemapIndex, generateSitemapChunk, SITEMAP_URLS } from '../data/sitemap';
+#!/usr/bin/env node
 
 /**
  * Generate sitemap files for production deployment
- * This utility creates actual XML files that can be served statically
+ * Usage: node scripts/generate-sitemap.js
  */
 
-export const generateSitemapFiles = (outputDir: string = 'public'): void => {
+const fs = require('fs');
+const path = require('path');
+
+// Import the sitemap configuration
+const { BASE, SITEMAP_URLS, lastmod, DEFAULT_CHANGEFREQ, DEFAULT_PRIORITY } = require('../src/data/sitemap.ts');
+
+// Generate sitemap index XML
+const generateSitemapIndex = () => {
+  const items = Object.keys(SITEMAP_URLS).map((key) => {
+    const loc = `${BASE}/sitemaps/${key}.xml`;
+    return `  <sitemap>
+    <loc>${loc}</loc>
+    <lastmod>${lastmod()}</lastmod>
+  </sitemap>`;
+  });
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${items.join('\n')}
+</sitemapindex>`;
+};
+
+// Generate individual sitemap XML
+const generateSitemapChunk = (chunkId) => {
+  const urls = SITEMAP_URLS[chunkId];
+  if (!urls || !Array.isArray(urls)) {
+    return null;
+  }
+
+  const nodes = urls.map((loc) => `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${lastmod()}</lastmod>
+    <changefreq>${DEFAULT_CHANGEFREQ}</changefreq>
+    <priority>${DEFAULT_PRIORITY}</priority>
+  </url>`);
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+${nodes.join('\n')}
+</urlset>`;
+};
+
+// Generate sitemap files
+const generateSitemapFiles = (outputDir = 'public') => {
   try {
     // Ensure output directory exists
     if (!fs.existsSync(outputDir)) {
@@ -72,22 +116,8 @@ Crawl-delay: 1`;
   }
 };
 
-/**
- * Generate sitemap files for Vite build process
- * Call this during build to create static sitemap files
- */
-export const generateSitemapForBuild = (): void => {
-  const isProduction = process.env.NODE_ENV === 'production';
-  const outputDir = isProduction ? 'dist' : 'public';
-  
-  console.log(`🔧 Generating sitemap files for ${isProduction ? 'production' : 'development'}...`);
-  generateSitemapFiles(outputDir);
-};
-
-/**
- * Development utility to generate sitemap files
- * Run this manually during development
- */
+// Run the generator
 if (require.main === module) {
+  console.log('🔧 Generating sitemap files...\n');
   generateSitemapFiles('public');
 }
