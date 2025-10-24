@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://applicants.io/sitemap.xml
+Sitemap: https://applicants.io/sitemaps/main.xml
+Sitemap: https://applicants.io/sitemaps/categories.xml
+Sitemap: https://applicants.io/sitemaps/locations.xml
+Sitemap: https://applicants.io/sitemaps/category-location.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
