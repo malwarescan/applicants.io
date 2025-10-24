@@ -7,6 +7,8 @@ $routes = [
   ['/jobs/', ['pattern'=>'#^/jobs/?$#']],
   ['/post-job/', ['pattern'=>'#^/post-job/?$#']],
   ['/contact/', ['pattern'=>'#^/contact/?$#']],
+  ['/employers/', ['pattern'=>'#^/employers/?$#']],
+  ['/employers/synaxus/', ['pattern'=>'#^/employers/synaxus/?$#']],
 ];
 
 // Dynamic generation from jobs data

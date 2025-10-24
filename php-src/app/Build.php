@@ -14,22 +14,32 @@ class Build {
       @mkdir($dir, 0777, true);
       file_put_contents($dir . 'index.html', $html);
     }
-    // Copy /public assets
-    self::copyDir(__DIR__ . '/../public', __DIR__ . '/../dist');
+    // Copy /public assets (excluding PHP files)
+    self::copyDir(__DIR__ . '/../public', __DIR__ . '/../dist', ['.php']);
     // Optional: write a basic sitemap
     $urls = array_map(fn($e) => $e[0], $map);
     $sitemap = self::sitemap($urls);
     file_put_contents(__DIR__ . '/../dist/sitemap.xml', $sitemap);
   }
-  private static function copyDir(string $src, string $dst): void {
+  private static function copyDir(string $src, string $dst, array $exclude = []): void {
     if (!is_dir($src)) return;
     @mkdir($dst, 0777, true);
     $it = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($src, \FilesystemIterator::SKIP_DOTS));
     foreach ($it as $file) {
       $target = $dst . '/' . $it->getSubPathName();
       if ($file->isDir()) { @mkdir($target, 0777, true); } else {
-        @mkdir(dirname($target), 0777, true);
-        copy($file->getPathname(), $target);
+        // Skip files with excluded extensions
+        $shouldExclude = false;
+        foreach ($exclude as $ext) {
+          if (str_ends_with($file->getPathname(), $ext)) {
+            $shouldExclude = true;
+            break;
+          }
+        }
+        if (!$shouldExclude) {
+          @mkdir(dirname($target), 0777, true);
+          copy($file->getPathname(), $target);
+        }
       }
     }
   }
