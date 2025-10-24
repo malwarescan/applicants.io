@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx vite",
     "build": "echo 'Static files ready in /dist'",
-    "start": "npx serve dist -s",
+    "start": "npx serve dist -l 3000",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preview": "npx vite preview",
     "generate-sitemap": "node scripts/generate-sitemap-simple.js",
