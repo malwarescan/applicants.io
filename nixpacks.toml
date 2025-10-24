@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["php", "phpPackages.composer"]
+
+[phases.install]
+cmds = ["npm ci"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "cd php-src/public && php -S 0.0.0.0:$PORT"
