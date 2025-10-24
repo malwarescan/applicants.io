@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "npx vite",
-    "build": "echo 'Using pre-built static files from /dist'",
+    "build": "echo 'Static files ready in /dist'",
+    "start": "npx serve dist -s",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preview": "npx vite preview",
     "generate-sitemap": "node scripts/generate-sitemap-simple.js",
@@ -15,7 +16,8 @@
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.2"
+    "react-router-dom": "^6.26.2",
+    "serve": "^14.2.1"
   },
   "devDependencies": {
     "@types/node": "^20.11.18",
