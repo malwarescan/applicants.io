@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Put any custom CSS here, eg:
+.btn { @apply px-3 py-2 rounded font-medium; }
+*/
+

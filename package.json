@@ -8,7 +8,9 @@
     "build": "npx vite build && node scripts/generate-sitemap-simple.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preview": "npx vite preview",
-    "generate-sitemap": "node scripts/generate-sitemap-simple.js"
+    "generate-sitemap": "node scripts/generate-sitemap-simple.js",
+    "dev:css": "tailwindcss -i ./css/input.css -o ./php-src/public/assets/styles.css --watch",
+    "build:css": "tailwindcss -i ./css/input.css -o ./php-src/public/assets/styles.css --minify"
   },
   "dependencies": {
     "react": "^18.3.1",

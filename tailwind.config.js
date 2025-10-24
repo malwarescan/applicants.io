@@ -1,15 +1,10 @@
-export default {
+module.exports = {
   content: [
-    './index.html',
-    './src/**/*.{js,ts,jsx,tsx}'
+    "./php-src/views/**/*.php",
+    "./php-src/routes.web.php"
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
-        'headline': ['Alan Sans', 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
-      },
-    },
+    extend: {},
   },
   plugins: [],
-}
+};

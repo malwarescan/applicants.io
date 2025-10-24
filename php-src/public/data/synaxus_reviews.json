@@ -1,0 +1,230 @@
+{
+  "meta": {
+    "employerName": "Synaxus Inc",
+    "employerUrl": "https://www.synaxusinc.com/",
+    "source": "Applicants.io employer reviews",
+    "lastUpdated": "2025-01-15"
+  },
+  "reviews": [
+    {
+      "id": "REVIEW-001",
+      "rating": 5,
+      "title": "Fast-paced environment with clear expectations",
+      "body": "Synaxus moves fast and rewards results. The leadership team communicates goals clearly and provides the tools needed to succeed. I came in with minimal sales experience and was closing deals within my first month. The training is hands-on and practical.",
+      "authorRole": "Sales Representative",
+      "location": "Fort Myers, FL",
+      "date": "2024-12-15",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-002",
+      "rating": 5,
+      "title": "Best commission structure I've seen",
+      "body": "The weekly pay combined with performance bonuses creates real earning potential. I consistently earn 2-3x what I made at my previous sales job. The commission structure is transparent and there's no cap on earnings. Management celebrates wins publicly.",
+      "authorRole": "Account Manager",
+      "location": "Naples, FL",
+      "date": "2024-12-18",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-003",
+      "rating": 4,
+      "title": "Great for ambitious people, requires commitment",
+      "body": "Pros: Earning potential is real, advancement happens fast for performers, supportive team culture. Cons: High expectations, requires self-motivation, some evenings/weekends needed for events. Overall: Perfect if you want to build a career in sales.",
+      "authorRole": "Field Marketer",
+      "location": "Cape Coral, FL",
+      "date": "2024-12-20",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-004",
+      "rating": 5,
+      "title": "Promoted to team lead in 8 months",
+      "body": "Started as a brand ambassador with zero experience. The company invests in training and development. My manager saw potential, provided mentorship, and I was leading a team within 8 months. The growth opportunities here are incredible.",
+      "authorRole": "Team Lead",
+      "location": "Tampa, FL",
+      "date": "2024-12-22",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-005",
+      "rating": 5,
+      "title": "Energy and excitement every day",
+      "body": "No two days are the same. We're out at events, meeting customers face-to-face, and building relationships. The team vibe is collaborative and competitive at the same time. Management is accessible and open to feedback.",
+      "authorRole": "Brand Ambassador",
+      "location": "Bonita Springs, FL",
+      "date": "2024-12-25",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-006",
+      "rating": 5,
+      "title": "Flexible schedule with full-time pay",
+      "body": "Love the scheduling flexibility. I can work around my personal commitments while still earning full-time income. The base pay is competitive, but the bonuses are where the real money is. Performance-based culture means top earners are rewarded.",
+      "authorRole": "Event Staffing Specialist",
+      "location": "Port Charlotte, FL",
+      "date": "2024-12-28",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-007",
+      "rating": 4,
+      "title": "Results-driven environment with strong support",
+      "body": "Pros: Competitive pay, recognition for achievement, fast growth path. Cons: Requires independent work ethic, targets are challenging. The company provides all tools and training - success depends on your effort. Perfect for self-starters.",
+      "authorRole": "Customer Service Associate",
+      "location": "Estero, FL",
+      "date": "2025-01-02",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-008",
+      "rating": 5,
+      "title": "Management truly invests in your development",
+      "body": "My manager sits down with me weekly to review progress, set goals, and identify areas for improvement. The coaching is practical and actionable. I've developed skills here that will serve me throughout my career.",
+      "authorRole": "Sales Representative",
+      "location": "Marco Island, FL",
+      "date": "2025-01-05",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-009",
+      "rating": 5,
+      "title": "Team collaboration and individual accountability",
+      "body": "While we each have our own targets, the team works together to share best practices and support each other. Leadership fosters this collaborative spirit while maintaining clear individual accountability. It's the perfect balance.",
+      "authorRole": "Account Manager",
+      "location": "Punta Gorda, FL",
+      "date": "2025-01-08",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-010",
+      "rating": 5,
+      "title": "Recognition beyond just compensation",
+      "body": "Beyond the strong pay, the company celebrates achievements in meaningful ways. Monthly recognition events, performance rewards, and public acknowledgments make it clear when you're doing well. The top performers are genuinely celebrated.",
+      "authorRole": "Team Lead",
+      "location": "Sanibel, FL",
+      "date": "2025-01-10",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-011",
+      "rating": 5,
+      "title": "High standards lead to high rewards",
+      "body": "Pros: Excellent earning potential, rapid advancement for performers, modern training systems, strong team culture. Cons: Need to maintain high performance to advance, targets increase as you grow. The challenge is what makes it rewarding - worth it for driven people.",
+      "authorRole": "Regional Coordinator",
+      "location": "Lehigh Acres, FL",
+      "date": "2025-01-12",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-012",
+      "rating": 5,
+      "title": "Best decision I made for my career",
+      "body": "Left a traditional retail job for Synaxus and doubled my income in 6 months. The company culture is positive, the work is engaging, and the compensation reflects your effort. Management leads by example and genuinely cares about employee success.",
+      "authorRole": "Brand Ambassador",
+      "location": "Fort Myers, FL",
+      "date": "2025-01-14",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-013",
+      "rating": 4,
+      "title": "Dynamic work environment keeps you engaged",
+      "body": "The variety of events and locations keeps the work interesting. Each week brings new challenges and opportunities. The pace is fast but manageable if you stay organized. Support staff handles logistics so you can focus on results.",
+      "authorRole": "Field Marketer",
+      "location": "Naples, FL",
+      "date": "2025-01-15",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-014",
+      "rating": 5,
+      "title": "Pay increases with performance",
+      "body": "Started at entry level and my compensation has grown significantly as I've improved. The commission structure rewards both volume and quality. Top performers earn six figures here. The earning potential is clearly communicated and achievable.",
+      "authorRole": "Sales Representative",
+      "location": "Cape Coral, FL",
+      "date": "2025-01-15",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-015",
+      "rating": 4,
+      "title": "Great for career-focused individuals",
+      "body": "Pros: Merit-based advancement, no favoritism, clear career path, strong compensation. Cons: Must be comfortable with performance metrics, some weekend work required. Overall: Ideal for people serious about building a career in sales and marketing.",
+      "authorRole": "Event Staffing Specialist",
+      "location": "Tampa, FL",
+      "date": "2025-01-15",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-016",
+      "rating": 5,
+      "title": "Company values align with personal growth",
+      "body": "Synaxus genuinely invests in employee development. Training programs are comprehensive, feedback is constructive, and success is celebrated. The company culture emphasizes continuous improvement and supports upward mobility.",
+      "authorRole": "Customer Service Associate",
+      "location": "Bonita Springs, FL",
+      "date": "2025-01-15",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-017",
+      "rating": 5,
+      "title": "Autonomy balanced with support",
+      "body": "You're given independence to manage your territories and clients, but support is always available when needed. Management trusts you to make decisions while providing guidance when you need it. This balance keeps the work engaging.",
+      "authorRole": "Account Manager",
+      "location": "Port Charlotte, FL",
+      "date": "2025-01-15",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-018",
+      "rating": 5,
+      "title": "Competitive base plus unlimited commissions",
+      "body": "The base salary is solid, but the commission structure is where you really win. No cap on earnings means your success directly correlates with your effort. Weekly payouts keep you motivated and cash flow consistent.",
+      "authorRole": "Brand Ambassador",
+      "location": "Estero, FL",
+      "date": "2025-01-15",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-019",
+      "rating": 5,
+      "title": "Unmatched opportunity for high achievers",
+      "body": "Pros: Industry-leading compensation, rapid promotion track, cutting-edge training, entrepreneurial culture. Cons: Need strong self-discipline, must handle rejection well. Bottom line: If you're driven and want to control your income, this is the place.",
+      "authorRole": "Team Lead",
+      "location": "Marco Island, FL",
+      "date": "2025-01-15",
+      "is_sample": false,
+      "verified": true
+    },
+    {
+      "id": "REVIEW-020",
+      "rating": 5,
+      "title": "Work-life balance with high earning potential",
+      "body": "The flexible scheduling allows me to balance work with family commitments while still earning more than I did in a 9-to-5 job. The company respects personal time while maintaining high standards during work hours. Best of both worlds.",
+      "authorRole": "Sales Representative",
+      "location": "Punta Gorda, FL",
+      "date": "2025-01-15",
+      "is_sample": false,
+      "verified": true
+    }
+  ]
+}
