@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   content: [
     "./php-src/views/**/*.php",
     "./php-src/routes.web.php"
