@@ -18,8 +18,8 @@ class Build {
       @mkdir($dir, 0777, true);
       file_put_contents($dir . 'index.html', $html);
     }
-    // Copy /public assets (excluding PHP files)
-    self::copyDir(__DIR__ . '/../public', __DIR__ . '/../dist', ['.php']);
+    // Copy /public assets (excluding PHP files and JSON files)
+    self::copyDir(__DIR__ . '/../public', __DIR__ . '/../dist', ['.php', '.json']);
     // Optional: write a basic sitemap
     $urls = array_map(fn($e) => $e[0], $map);
     $sitemap = self::sitemap($urls);
