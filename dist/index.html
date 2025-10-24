@@ -6,7 +6,96 @@
 <script>
 // Handle employer-reviews route
 if (window.location.pathname === '/employer-reviews' || window.location.pathname === '/employer-reviews/') {
-  window.location.href = '/employer-reviews.html';
+  // Show employer reviews content instead of redirecting
+  document.body.innerHTML = `
+    <!doctype html>
+    <html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <title>Employer Reviews - Applicants.io</title>
+    <meta name="description" content="Browse verified employee reviews and ratings for top companies.">
+    <link rel="canonical" href="/employer-reviews/">
+    <meta property="og:title" content="Employer Reviews - Applicants.io">
+    <meta property="og:description" content="Browse verified employee reviews and ratings for top companies.">
+    <meta name="twitter:card" content="summary_large_image"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/assets/styles.css?v=1761334204">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1761334204">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=1761334204">
+    <link rel="shortcut icon" href="/favicon.ico?v=1761334204">
+    </head>
+    <body>
+    <div class="min-h-screen bg-white">
+      <header class="border-b border-gray-200">
+        <div class="container mx-auto px-4">
+          <div class="py-4">
+            <nav class="flex flex-col md:flex-row md:items-center md:justify-between">
+              <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center space-x-2">
+                  <img src="/logo.png" alt="Applicants.IO Logo" class="h-8 w-auto">
+                  <span class="text-xl font-headline font-semibold">Applicants.IO</span>
+                </a>
+              </div>
+              <div class="mt-4 md:mt-0">
+                <div class="flex items-center space-x-6">
+                  <a href="/" class="text-gray-700 hover:text-blue-600 transition-colors">Jobs</a>
+                  <a href="/employer-reviews" class="text-blue-600 font-medium">Employer Reviews</a>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+      
+      <main class="container mx-auto px-4 py-6">
+        <div class="space-y-6">
+          <!-- Breadcrumb -->
+          <nav class="text-sm text-gray-600 mb-8">
+            <a href="/" class="hover:text-blue-600 transition-colors">Home</a> › 
+            <span class="text-gray-900 font-medium">Employer Reviews</span>
+          </nav>
+
+          <!-- Header -->
+          <header class="mb-8">
+            <h1 class="text-4xl font-headline font-bold text-gray-900 mb-3">
+              Employer Reviews
+            </h1>
+            <p class="text-lg text-gray-600">Browse verified employee reviews and ratings for top companies.</p>
+          </header>
+
+          <!-- Featured Employers -->
+          <section class="bg-white rounded-lg p-8">
+            <h2 class="text-2xl font-headline font-semibold mb-6 text-gray-900">Featured Employers</h2>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-4">
+                  <h3 class="text-xl font-semibold text-gray-900">Synaxus Inc</h3>
+                  <div class="flex items-center space-x-1">
+                    <span class="text-yellow-400">★★★★★</span>
+                    <span class="text-sm text-gray-600">4.8/5</span>
+                  </div>
+                </div>
+                <p class="text-gray-600 mb-4">Technology and consulting services company</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-500">20 verified reviews</span>
+                  <a href="/employers/synaxus/" class="text-blue-600 hover:text-blue-800 font-medium">
+                    View Reviews →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      
+      <footer class="bg-gray-50 border-t border-gray-200 mt-12">
+        <div class="container mx-auto px-4 py-6">
+          <p class="text-center text-gray-600">© 2025 Applicants.IO. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+    </body>
+    </html>
+  `;
 }
 </script>
 <meta name="description" content="Find your next career opportunity with our comprehensive job listings.">
