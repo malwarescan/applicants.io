@@ -22,7 +22,7 @@ if ($agg['count'] >= 5) {
 // Use the main site's renderer
 [$head, $body] = Renderer::render('employer-reviews', [
     'employerName' => $employerName,
-    'employerUrl' => $employerUrl,
+    'employerUrl' => $employerName,
     'verified' => $verified,
     'agg' => $agg,
     'structuredData' => $structuredData
@@ -32,8 +32,10 @@ if ($agg['count'] >= 5) {
     'canonical' => 'https://www.applicants.io/employers/synaxus'
 ]);
 
-// Generate full HTML
-$html = "<!doctype html><html><head><meta charset=\"utf-8\">$head<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"></head><body><main>$body</main></body></html>";
+// Generate full HTML using the layout
+ob_start();
+require __DIR__ . '/php-src/views/layout.php';
+$html = ob_get_clean();
 
 // Create directory and write file
 $dir = __DIR__ . '/dist/employers/synaxus/';
