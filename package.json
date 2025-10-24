@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx vite",
-    "build": "npx vite build && node scripts/generate-sitemap-simple.js",
+    "build": "npm run build:css && php scripts/build.php",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preview": "npx vite preview",
     "generate-sitemap": "node scripts/generate-sitemap-simple.js",
