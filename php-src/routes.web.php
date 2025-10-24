@@ -64,9 +64,21 @@ return [
     return Renderer::render('contact', [], ['title'=>'Contact Us - Applicants.IO','desc'=>'Get in touch with us for support or questions.','canonical'=>'/contact/']);
   },
   '#^/employer-reviews/?$#' => function() {
-    // Redirect to employers index page
-    header('Location: /employers/');
-    exit;
+    // List of available employers
+    $employers = [
+      [
+        'name' => 'Synaxus Inc',
+        'slug' => 'synaxus',
+        'url' => 'https://www.synaxusinc.com/',
+        'description' => 'Technology and consulting services company'
+      ]
+    ];
+    
+    return Renderer::render('employers-index', ['employers' => $employers], [
+      'title' => 'Employer Reviews - Applicants.io',
+      'desc' => 'Browse verified employee reviews and ratings for top companies.',
+      'canonical' => '/employer-reviews/'
+    ]);
   },
   '#^/employers/?$#' => function() {
     // List of available employers
