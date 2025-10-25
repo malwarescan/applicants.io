@@ -106,7 +106,7 @@
 <li>Begin your journey with comprehensive training</li>
 </ol>
 <div class="flex flex-wrap gap-3 mb-4">
-<a href='https://synaxusinc.applytojob.com/apply/' target='_blank' rel='noopener noreferrer' class='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors inline-block'>Apply Now on Synaxus Website</a>
+<a href='https://synaxusinc.com/jobs/marketing-specialist-estero-fl' target='_blank' rel='noopener noreferrer' class='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors inline-block'>Apply Now on Synaxus Website</a>
 <a href='mailto:careers@synaxusinc.com' class='bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors inline-block'>Email Resume</a>
 </div>
 <p class="text-gray-600"><strong>Phone:</strong> <a href='tel:+1-941-564-9169' class='text-blue-600 hover:underline'>+1-941-564-9169</a></p>
