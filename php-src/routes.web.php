@@ -101,7 +101,14 @@ return [
   // Synaxus employer pages - serve static PHP files
   '#^/employers/synaxus/(?P<page>[^/]+)/?$#' => function($p) {
     $page = $p['page'] ?? '';
+    
+    // Try without -fl suffix first (matches data identifiers)
     $file = __DIR__ . '/../../employers/synaxus/' . $page . '.php';
+    
+    // If not found, try with -fl suffix (matches generated filenames)
+    if (!file_exists($file)) {
+      $file = __DIR__ . '/../../employers/synaxus/' . $page . '-fl.php';
+    }
     
     if (file_exists($file)) {
       include $file;
