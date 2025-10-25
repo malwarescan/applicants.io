@@ -51,16 +51,18 @@ function ai_stars(int $rating): string {
 function ai_schema_employer_agg(string $employerName, string $employerUrl, array $verified, float $avg, int $count): string {
   // Create the organization that supports reviews
   $organization = [
+    "@id" => "#organization",
     "@type" => "Organization",
     "name" => $employerName,
     "url" => $employerUrl,
     "sameAs" => $employerUrl
   ];
 
-  // Create the aggregate rating
+  // Create the aggregate rating with proper ID
   $aggregateRating = [
+    "@id" => "#aggregateRating",
     "@type" => "EmployerAggregateRating",
-    "itemReviewed" => $organization,
+    "itemReviewed" => ["@id" => "#organization"],
     "ratingValue" => (string)$avg,
     "bestRating" => "5",
     "worstRating" => "1",
@@ -68,8 +70,8 @@ function ai_schema_employer_agg(string $employerName, string $employerUrl, array
     "reviewCount" => (string)$count
   ];
 
-  // Create individual reviews that link to the aggregate rating
-  $reviews = array_map(function($r) use ($organization, $aggregateRating) {
+  // Create individual reviews that reference the aggregate rating
+  $reviews = array_map(function($r, $index) {
     return [
       "@type" => "Review",
       "author" => [
@@ -85,10 +87,10 @@ function ai_schema_employer_agg(string $employerName, string $employerUrl, array
         "bestRating" => "5",
         "worstRating" => "1"
       ],
-      "itemReviewed" => $organization,
-      "aggregateRating" => $aggregateRating
+      "itemReviewed" => ["@id" => "#organization"],
+      "aggregateRating" => ["@id" => "#aggregateRating"]
     ];
-  }, array_slice($verified, 0, 20)); // keep payload reasonable
+  }, array_slice($verified, 0, 20), array_keys(array_slice($verified, 0, 20))); // keep payload reasonable
 
   // Add the reviews to the aggregate rating
   $aggregateRating["review"] = $reviews;
