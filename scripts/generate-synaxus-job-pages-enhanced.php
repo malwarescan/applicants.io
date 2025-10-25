@@ -291,16 +291,19 @@ class EnhancedSynaxusPageGenerator {
         ]);
         
         // Header
-        echo "<header>\n";
-        echo "<h1>" . htmlspecialchars($job['title']) . "</h1>\n";
-        echo "<p class='subtitle'><strong>Synaxus Inc.</strong> — Verified Employer</p>\n";
-        echo "<p class='location'>" . htmlspecialchars($locationStr) . "</p>\n";
-        echo "</header>\n";
+        echo "<div class=\"mb-6\">\n";
+        echo "<h1 class=\"text-2xl font-headline font-medium\">" . htmlspecialchars($job['title']) . "</h1>\n";
+        echo "<div class=\"mt-2 text-gray-500\">\n";
+        echo "<span><strong>Synaxus Inc.</strong> — Verified Employer</span>\n";
+        echo "<span class=\"mx-2\">•</span>\n";
+        echo "<span>" . htmlspecialchars($locationStr) . "</span>\n";
+        echo "</div>\n";
+        echo "</div>\n";
         
         // Quick facts box (E-E-A-T signal)
-        echo "<section class='quick-facts'>\n";
-        echo "<h2>Quick Facts</h2>\n";
-        echo "<ul>\n";
+        echo "<div class=\"bg-gray-50 p-4 rounded-lg mb-6\">\n";
+        echo "<h2 class=\"text-lg font-headline font-medium mb-3\">Quick Facts</h2>\n";
+        echo "<ul class=\"space-y-2\">\n";
         
         if (!empty($job['employmentType'])) {
             $empType = is_array($job['employmentType']) ? implode(', ', $job['employmentType']) : $job['employmentType'];
@@ -333,99 +336,99 @@ class EnhancedSynaxusPageGenerator {
         }
         
         echo "</ul>\n";
-        echo "</section>\n";
+        echo "</div>\n";
         
         // About the role (enhanced with depth)
-        echo "<section class='job-description'>\n";
-        echo "<h2>About the Role</h2>\n";
+        echo "<div class=\"border-t border-gray-200 pt-6 mb-6\">\n";
+        echo "<h2 class=\"text-lg font-headline font-medium mb-2\">About the Role</h2>\n";
         echo "<p>" . htmlspecialchars($job['description']) . "</p>\n";
-        echo "<p>At Synaxus Inc., we're committed to providing our team members with opportunities for growth and advancement. Our team enjoys a collaborative environment where each member's contributions are valued and recognized. We've maintained strong partnerships with Fortune 500 brands for over a decade, providing stable and rewarding career opportunities throughout Southwest Florida.</p>\n";
-        echo "</section>\n";
+        echo "<p class=\"text-gray-600 leading-relaxed\">At Synaxus Inc., we're committed to providing our team members with opportunities for growth and advancement. Our team enjoys a collaborative environment where each member's contributions are valued and recognized. We've maintained strong partnerships with Fortune 500 brands for over a decade, providing stable and rewarding career opportunities throughout Southwest Florida.</p>\n";
+        echo "</div>\n";
         
         // Detailed responsibilities
         if (!empty($job['responsibilities'])) {
-            echo "<section class='responsibilities'>\n";
-            echo "<h2>Key Responsibilities</h2>\n";
+            echo "<div class=\"border-t border-gray-200 pt-6 mb-6\">\n";
+            echo "<h2 class=\"text-lg font-headline font-medium mb-2\">Key Responsibilities</h2>\n";
             if (is_array($job['responsibilities'])) {
-                echo "<ul>\n";
+                echo "<ul class=\"list-disc list-inside space-y-1 text-gray-600\">\n";
                 foreach ($job['responsibilities'] as $resp) {
                     echo "<li>" . htmlspecialchars($resp) . "</li>\n";
                 }
                 echo "</ul>\n";
             } else {
-                echo "<p>" . htmlspecialchars($job['responsibilities']) . "</p>\n";
+                echo "<p class=\"text-gray-600\">" . htmlspecialchars($job['responsibilities']) . "</p>\n";
             }
-            echo "</section>\n";
+            echo "</div>\n";
         }
         
         // Qualifications
         if (!empty($job['qualifications']) && is_array($job['qualifications'])) {
-            echo "<section class='qualifications'>\n";
-            echo "<h2>Required Qualifications</h2>\n";
-            echo "<ul>\n";
+            echo "<div class=\"border-t border-gray-200 pt-6 mb-6\">\n";
+            echo "<h2 class=\"text-lg font-headline font-medium mb-2\">Required Qualifications</h2>\n";
+            echo "<ul class=\"list-disc list-inside space-y-1 text-gray-600\">\n";
             foreach ($job['qualifications'] as $qual) {
                 echo "<li>" . htmlspecialchars($qual) . "</li>\n";
             }
             echo "</ul>\n";
-            echo "<p class='note'><strong>Note:</strong> No prior experience required for entry-level positions. Comprehensive training and mentorship provided.</p>\n";
-            echo "</section>\n";
+            echo "<p class=\"mt-3 text-sm text-gray-500 italic\"><strong>Note:</strong> No prior experience required for entry-level positions. Comprehensive training and mentorship provided.</p>\n";
+            echo "</div>\n";
         }
         
         // Skills
         if (!empty($job['skills'])) {
-            echo "<section class='skills'>\n";
-            echo "<h2>Required Skills</h2>\n";
-            echo "<p>" . htmlspecialchars($job['skills']) . "</p>\n";
-            echo "</section>\n";
+            echo "<div class=\"border-t border-gray-200 pt-6 mb-6\">\n";
+            echo "<h2 class=\"text-lg font-headline font-medium mb-2\">Required Skills</h2>\n";
+            echo "<p class=\"text-gray-600\">" . htmlspecialchars($job['skills']) . "</p>\n";
+            echo "</div>\n";
         }
         
         // Benefits (enhanced)
         if (!empty($job['jobBenefits']) && is_array($job['jobBenefits'])) {
-            echo "<section class='benefits'>\n";
-            echo "<h2>Benefits & Perks</h2>\n";
-            echo "<ul>\n";
+            echo "<div class=\"border-t border-gray-200 pt-6 mb-6\">\n";
+            echo "<h2 class=\"text-lg font-headline font-medium mb-2\">Benefits & Perks</h2>\n";
+            echo "<ul class=\"list-disc list-inside space-y-1 text-gray-600\">\n";
             foreach ($job['jobBenefits'] as $benefit) {
                 echo "<li>" . htmlspecialchars($benefit) . "</li>\n";
             }
             echo "</ul>\n";
-            echo "<p>Synaxus Inc. prides itself on offering competitive compensation packages with merit-based opportunities for advancement. Our team members benefit from flexible scheduling, comprehensive training programs, and access to exclusive professional development resources.</p>\n";
-            echo "</section>\n";
+            echo "<p class=\"mt-3 text-gray-600\">Synaxus Inc. prides itself on offering competitive compensation packages with merit-based opportunities for advancement. Our team members benefit from flexible scheduling, comprehensive training programs, and access to exclusive professional development resources.</p>\n";
+            echo "</div>\n";
         }
         
         // Application section
-        echo "<section class='application'>\n";
-        echo "<h2>How to Apply</h2>\n";
-        echo "<p>Ready to join the Synaxus Inc. team? Our application process is simple and straightforward:</p>\n";
-        echo "<ol>\n";
+        echo "<div class=\"border-t border-gray-200 pt-6 mb-6\">\n";
+        echo "<h2 class=\"text-lg font-headline font-medium mb-2\">How to Apply</h2>\n";
+        echo "<p class=\"text-gray-600 mb-4\">Ready to join the Synaxus Inc. team? Our application process is simple and straightforward:</p>\n";
+        echo "<ol class=\"list-decimal list-inside space-y-2 text-gray-600 mb-4\">\n";
         echo "<li>Apply online through our careers page</li>\n";
         echo "<li>Receive a response within 24 hours</li>\n";
         echo "<li>Complete a friendly interview</li>\n";
         echo "<li>Begin your journey with comprehensive training</li>\n";
         echo "</ol>\n";
-        echo "<div class='apply-buttons'>\n";
+        echo "<div class=\"flex flex-wrap gap-3 mb-4\">\n";
         
         if (!empty($job['url'])) {
-            echo "<a href='" . htmlspecialchars($job['url']) . "' target='_blank' rel='noopener noreferrer' class='btn btn-primary'>Apply Now on Synaxus Website</a>\n";
+            echo "<a href='" . htmlspecialchars($job['url']) . "' target='_blank' rel='noopener noreferrer' class='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors inline-block'>Apply Now on Synaxus Website</a>\n";
         }
         
         if (!empty($job['contactEmail'])) {
-            echo "<a href='mailto:" . htmlspecialchars($job['contactEmail']) . "' class='btn btn-secondary'>Email Resume</a>\n";
+            echo "<a href='mailto:" . htmlspecialchars($job['contactEmail']) . "' class='bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors inline-block'>Email Resume</a>\n";
         }
         
         echo "</div>\n";
         
         if (!empty($job['contactPhone'])) {
-            echo "<p><strong>Phone:</strong> <a href='tel:" . htmlspecialchars($job['contactPhone']) . "'>" . htmlspecialchars($job['contactPhone']) . "</a></p>\n";
+            echo "<p class=\"text-gray-600\"><strong>Phone:</strong> <a href='tel:" . htmlspecialchars($job['contactPhone']) . "' class='text-blue-600 hover:underline'>" . htmlspecialchars($job['contactPhone']) . "</a></p>\n";
         }
         
-        echo "</section>\n";
+        echo "</div>\n";
         
         // Company info (E-E-A-T enhanced)
-        echo "<section class='company-info'>\n";
-        echo "<h2>About Synaxus Inc.</h2>\n";
-        echo "<p><strong>Synaxus Inc.</strong> is Southwest Florida's premier experiential marketing agency, serving the region since our founding. We specialize in connecting Fortune 500 brands with local communities through strategic experiential marketing campaigns.</p>\n";
-        echo "<h3>Why Work With Us?</h3>\n";
-        echo "<ul>\n";
+        echo "<div class=\"border-t border-gray-200 pt-6 mb-6\">\n";
+        echo "<h2 class=\"text-lg font-headline font-medium mb-2\">About Synaxus Inc.</h2>\n";
+        echo "<p class=\"text-gray-600 mb-4\"><strong>Synaxus Inc.</strong> is Southwest Florida's premier experiential marketing agency, serving the region since our founding. We specialize in connecting Fortune 500 brands with local communities through strategic experiential marketing campaigns.</p>\n";
+        echo "<h3 class=\"text-md font-medium mb-2\">Why Work With Us?</h3>\n";
+        echo "<ul class=\"list-disc list-inside space-y-1 text-gray-600 mb-4\">\n";
         echo "<li><strong>Established Reputation:</strong> Over a decade of experience in experiential marketing</li>\n";
         echo "<li><strong>Fortune 500 Partnerships:</strong> Work with nationally recognized brands</li>\n";
         echo "<li><strong>Career Growth:</strong> 31-68% promotion rate by month 6</li>\n";
@@ -433,21 +436,21 @@ class EnhancedSynaxusPageGenerator {
         echo "<li><strong>Competitive Compensation:</strong> Salary potential up to \$68,000 for full-time positions</li>\n";
         echo "<li><strong>Verified Employer:</strong> 4.8/5 rating from team members</li>\n";
         echo "</ul>\n";
-        echo "<p><strong>Headquarters:</strong> 5272 Summerlin Commons Way #601, Fort Myers, FL 33907</p>\n";
-        echo "<p><a href='https://synaxusinc.com' target='_blank' rel='noopener noreferrer'>Visit Synaxus Inc. Website</a> | <a href='https://www.linkedin.com/company/synaxus-inc' target='_blank' rel='noopener noreferrer'>LinkedIn Profile</a></p>\n";
-        echo "</section>\n";
+        echo "<p class=\"text-gray-600 mb-2\"><strong>Headquarters:</strong> 5272 Summerlin Commons Way #601, Fort Myers, FL 33907</p>\n";
+        echo "<p class=\"mb-4\"><a href='https://synaxusinc.com' target='_blank' rel='noopener noreferrer' class='text-blue-600 hover:underline'>Visit Synaxus Inc. Website</a> | <a href='https://www.linkedin.com/company/synaxus-inc' target='_blank' rel='noopener noreferrer' class='text-blue-600 hover:underline'>LinkedIn Profile</a></p>\n";
+        echo "</div>\n";
         
         // E-E-A-T Trust signals
-        echo "<section class='trust-signals'>\n";
-        echo "<h2>Verified Information</h2>\n";
-        echo "<ul>\n";
+        echo "<div class=\"border-t border-gray-200 pt-6 mb-6\">\n";
+        echo "<h2 class=\"text-lg font-headline font-medium mb-2\">Verified Information</h2>\n";
+        echo "<ul class=\"list-disc list-inside space-y-1 text-gray-600\">\n";
         echo "<li>✓ Verified employer with established business operations</li>\n";
         echo "<li>✓ Licensed and insured in Florida</li>\n";
         echo "<li>✓ Direct contact information provided</li>\n";
         echo "<li>✓ Physical business address verified</li>\n";
         echo "<li>✓ Active corporate presence since founding</li>\n";
         echo "</ul>\n";
-        echo "</section>\n";
+        echo "</div>\n";
         
         echo "</main>\n";
         echo "<footer class=\"border-t border-gray-200 mt-12 py-6\">\n";
