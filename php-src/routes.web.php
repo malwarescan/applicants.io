@@ -98,6 +98,36 @@ return [
     ]);
   },
   
+  // Synaxus employer pages - serve static PHP files
+  '#^/employers/synaxus/(?P<page>[^/]+)/?$#' => function($p) {
+    $page = $p['page'] ?? '';
+    $file = __DIR__ . '/../../employers/synaxus/' . $page . '.php';
+    
+    if (file_exists($file)) {
+      include $file;
+      exit;
+    }
+    
+    // Fallback to reviews if page not found
+    return Renderer::render('employers-index', ['employers' => [
+      ['name' => 'Synaxus Inc', 'slug' => 'synaxus', 'url' => 'https://www.synaxusinc.com/']
+    ]], [
+      'title' => 'Synaxus Inc - Employer Reviews',
+      'desc' => 'Browse Synaxus Inc employee reviews and job openings.',
+      'canonical' => '/employers/synaxus/'
+    ]);
+  },
+  
+  // Synaxus employer index
+  '#^/employers/synaxus/?$#' => function() {
+    $file = __DIR__ . '/../../employers/synaxus/index.php';
+    if (file_exists($file)) {
+      include $file;
+      exit;
+    }
+    return ["", "<h1>404 - Not Found</h1>"];
+  },
+  
   // Serve sitemap files
   '#^/sitemap\.xml$#' => function() {
     $sitemapFile = __DIR__ . '/public/sitemap.xml';
