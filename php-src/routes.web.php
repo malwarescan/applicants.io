@@ -102,12 +102,16 @@ return [
   '#^/employers/synaxus/(?P<page>[^/]+)/?$#' => function($p) {
     $page = $p['page'] ?? '';
     
+    // Correct path - routes.web.php is in php-src/app/
+    $baseDir = dirname(__DIR__); // Goes up from php-src/app/ to php-src/
+    $projectRoot = dirname($baseDir); // Goes up from php-src/ to project root
+    
     // Try without -fl suffix first (matches data identifiers)
-    $file = __DIR__ . '/../../employers/synaxus/' . $page . '.php';
+    $file = $projectRoot . '/employers/synaxus/' . $page . '.php';
     
     // If not found, try with -fl suffix (matches generated filenames)
     if (!file_exists($file)) {
-      $file = __DIR__ . '/../../employers/synaxus/' . $page . '-fl.php';
+      $file = $projectRoot . '/employers/synaxus/' . $page . '-fl.php';
     }
     
     if (file_exists($file)) {
@@ -127,7 +131,9 @@ return [
   
   // Synaxus employer index
   '#^/employers/synaxus/?$#' => function() {
-    $file = __DIR__ . '/../../employers/synaxus/index.php';
+    $baseDir = dirname(__DIR__);
+    $projectRoot = dirname($baseDir);
+    $file = $projectRoot . '/employers/synaxus/index.php';
     if (file_exists($file)) {
       include $file;
       exit;
