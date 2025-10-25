@@ -407,10 +407,8 @@ class EnhancedSynaxusPageGenerator {
         echo "</ol>\n";
         echo "<div class=\"flex flex-wrap gap-3 mb-4\">\n";
         
-        // Link to the specific job page on Synaxus
-        if (!empty($job['url'])) {
-            echo "<a href='" . htmlspecialchars($job['url']) . "' target='_blank' rel='noopener noreferrer' class='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors inline-block'>Apply Now on Synaxus Website</a>\n";
-        }
+        // Link to the Synaxus application portal
+        echo "<a href='https://synaxusinc.applytojob.com/apply/' target='_blank' rel='noopener noreferrer' class='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors inline-block'>Apply Now on Synaxus Website</a>\n";
         
         if (!empty($job['contactEmail'])) {
             echo "<a href='mailto:" . htmlspecialchars($job['contactEmail']) . "' class='bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors inline-block'>Email Resume</a>\n";
