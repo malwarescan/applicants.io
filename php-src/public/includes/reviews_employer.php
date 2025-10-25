@@ -49,8 +49,27 @@ function ai_stars(int $rating): string {
 
 /** EmployerAggregateRating JSON-LD (emitted only if ≥ 5 verified) */
 function ai_schema_employer_agg(string $employerName, string $employerUrl, array $verified, float $avg, int $count): string {
-  // Create individual reviews for the aggregate rating
-  $reviews = array_map(function($r){
+  // Create the organization that supports reviews
+  $organization = [
+    "@type" => "Organization",
+    "name" => $employerName,
+    "url" => $employerUrl,
+    "sameAs" => $employerUrl
+  ];
+
+  // Create the aggregate rating
+  $aggregateRating = [
+    "@type" => "EmployerAggregateRating",
+    "itemReviewed" => $organization,
+    "ratingValue" => (string)$avg,
+    "bestRating" => "5",
+    "worstRating" => "1",
+    "ratingCount" => (string)$count,
+    "reviewCount" => (string)$count
+  ];
+
+  // Create individual reviews that link to the aggregate rating
+  $reviews = array_map(function($r) use ($organization, $aggregateRating) {
     return [
       "@type" => "Review",
       "author" => [
@@ -65,27 +84,24 @@ function ai_schema_employer_agg(string $employerName, string $employerUrl, array
         "ratingValue" => (string)$r['rating'],
         "bestRating" => "5",
         "worstRating" => "1"
-      ]
+      ],
+      "itemReviewed" => $organization,
+      "aggregateRating" => $aggregateRating
     ];
   }, array_slice($verified, 0, 20)); // keep payload reasonable
 
-  // Create the main EmployerAggregateRating structured data
+  // Add the reviews to the aggregate rating
+  $aggregateRating["review"] = $reviews;
+
+  // Create the main structured data with both organization and aggregate rating
   $doc = [
     "@context" => "https://schema.org",
-    "@type" => "EmployerAggregateRating",
-    "itemReviewed" => [
-      "@type" => "Organization",
-      "name" => $employerName,
-      "url" => $employerUrl,
-      "sameAs" => $employerUrl
-    ],
-    "ratingValue" => (string)$avg,
-    "bestRating" => "5",
-    "worstRating" => "1",
-    "ratingCount" => (string)$count,
-    "reviewCount" => (string)$count,
-    "review" => $reviews
+    "@graph" => [
+      $organization,
+      $aggregateRating
+    ]
   ];
+  
   return '<script type="application/ld+json">'.json_encode($doc, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE).'</script>';
 }
 
