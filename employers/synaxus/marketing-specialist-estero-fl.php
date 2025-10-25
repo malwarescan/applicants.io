@@ -17,8 +17,32 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Marketing Specialist in Estero, FL at Synaxus Inc. — Applicants.io">
 <meta name="twitter:description" content="Develop and execute marketing campaigns, analyze performance data, and coordinate with brand teams to deliver exceptional results. Join Synaxus Inc., Southwest Florida&#039;s premier experiential marketing">
+<link rel="stylesheet" href="/assets/styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body>
+<div class="min-h-screen bg-white">
+<header class="border-b border-gray-200">
+<div class="container mx-auto px-4">
+<div class="py-4">
+<nav class="flex flex-col md:flex-row md:items-center md:justify-between">
+<div class="flex items-center justify-between">
+<a href="/" class="flex items-center space-x-2">
+<img src="/logo.png" alt="Applicants.IO Logo" class="h-8 w-auto">
+<span class="text-xl font-headline font-semibold">Applicants.IO</span>
+</a>
+</div>
+<div class="hidden md:flex items-center space-x-6 mt-4 md:mt-0">
+<a href="/" class="text-gray-700 hover:text-blue-600">Jobs</a>
+<a href="/employer-reviews" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Employer Reviews</a>
+</div>
+</nav>
+</div>
+</div>
+</header>
+<main class="container mx-auto px-4 py-6">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"JobPosting","title":"Marketing Specialist","description":"Develop and execute marketing campaigns, analyze performance data, and coordinate with brand teams to deliver exceptional results.","datePosted":"2025-10-06","hiringOrganization":{"@type":"Organization","name":"Synaxus Inc.","sameAs":"https://synaxusinc.com","logo":"https://synaxusinc.com/synaxus-logo.png"},"employmentType":["FULL_TIME"],"directApply":true,"identifier":{"@type":"PropertyValue","name":"Synaxus Inc.","value":"marketing-specialist-estero"},"jobLocationType":"TELECOMMUTE","applicantLocationRequirements":[{"@type":"Country","name":"United States"}],"jobLocation":[{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Estero","addressRegion":"FL","addressCountry":"US"}}],"baseSalary":{"@type":"MonetaryAmount","currency":"USD","value":{"@type":"QuantitativeValue","unitText":"HOUR","minValue":22,"maxValue":28}},"validThrough":"2025-12-24"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this a full time position?","acceptedAnswer":{"@type":"Answer","text":"Yes, this is a full time position at Synaxus Inc., Southwest Florida's premier experiential marketing agency with established Fortune 500 partnerships."}},{"@type":"Question","name":"Where is this job located?","acceptedAnswer":{"@type":"Answer","text":"This position is located in Estero, FL. Synaxus Inc. serves all of Southwest Florida including Fort Myers, Naples, Cape Coral, Bonita Springs, Estero, Lehigh Acres, Punta Gorda, and Port Charlotte."}},{"@type":"Question","name":"What is the salary range for this position?","acceptedAnswer":{"@type":"Answer","text":"The salary range for this position is $22 - $28 per hour. Full-time positions offer salary potential up to $68,000 annually with performance-based opportunities."}},{"@type":"Question","name":"How do I apply for this position?","acceptedAnswer":{"@type":"Answer","text":"Apply online through the Synaxus Inc. careers page. Our application process is simple: 1) Apply online with resume upload, 2) Receive a response within 24 hours, 3) Complete a friendly interview, 4) Begin your journey with comprehensive training. Email: careers@synaxusinc.com, Phone: (941) 564-9169."}},{"@type":"Question","name":"What qualifications are required?","acceptedAnswer":{"@type":"Answer","text":"This position requires: Excellent communication skills, Customer service experience preferred, Professional appearance. No prior experience required - we provide comprehensive training and mentorship programs."}},{"@type":"Question","name":"What benefits are offered?","acceptedAnswer":{"@type":"Answer","text":"Benefits include: Competitive compensation, Professional development opportunities, Flexible scheduling. Synaxus Inc. offers a 31-68% promotion rate by month 6 with clear career advancement paths."}},{"@type":"Question","name":"Is training provided?","acceptedAnswer":{"@type":"Answer","text":"Yes, Synaxus Inc. provides comprehensive training and development programs for all team members. This includes initial onboarding, ongoing professional development, mentorship opportunities, and hands-on coaching to help you excel in your role."}}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Synaxus Inc.","url":"https://synaxusinc.com","logo":"https://synaxusinc.com/synaxus-logo.png","sameAs":["https://www.linkedin.com/company/synaxus-inc","https://g.co/kgs/EP6p5de"],"address":{"@type":"PostalAddress","streetAddress":"5272 Summerlin Commons Way #601","addressLocality":"Fort Myers","addressRegion":"FL","postalCode":"33907","addressCountry":"US"},"contactPoint":{"@type":"ContactPoint","contactType":"HR","telephone":"+1-941-564-9169","email":"careers@synaxusinc.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"25","bestRating":"5","worstRating":"1"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.applicants.io"},{"@type":"ListItem","position":2,"name":"Synaxus Inc. Careers","item":"https://www.applicants.io/employers/synaxus/"},{"@type":"ListItem","position":3,"name":"Marketing Specialist","item":"https://www.applicants.io/employers/synaxus/marketing-specialist-estero-fl"}]}</script><header>
 <h1>Marketing Specialist</h1>
 <p class='subtitle'><strong>Synaxus Inc.</strong> — Verified Employer</p>
@@ -109,5 +133,12 @@
 <li>✓ Active corporate presence since founding</li>
 </ul>
 </section>
+</main>
+<footer class="border-t border-gray-200 mt-12 py-6">
+<div class="container mx-auto px-4 text-center text-gray-600">
+&copy; 2025 Applicants.IO. All rights reserved.
+</div>
+</footer>
+</div>
 </body>
 </html>

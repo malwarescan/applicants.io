@@ -195,7 +195,31 @@ class EnhancedSynaxusPageGenerator {
         echo "<meta name=\"twitter:title\" content=\"" . htmlspecialchars($title) . "\">\n";
         echo "<meta name=\"twitter:description\" content=\"" . htmlspecialchars(substr($description, 0, 200)) . "\">\n";
         
+        echo "<link rel=\"stylesheet\" href=\"/assets/styles.css\">\n";
+        echo "<link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\">\n";
+        echo "<link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/favicon-192.png\">\n";
+        echo "<link rel=\"shortcut icon\" href=\"/favicon.ico\">\n";
         echo "</head>\n<body>\n";
+        echo "<div class=\"min-h-screen bg-white\">\n";
+        echo "<header class=\"border-b border-gray-200\">\n";
+        echo "<div class=\"container mx-auto px-4\">\n";
+        echo "<div class=\"py-4\">\n";
+        echo "<nav class=\"flex flex-col md:flex-row md:items-center md:justify-between\">\n";
+        echo "<div class=\"flex items-center justify-between\">\n";
+        echo "<a href=\"/\" class=\"flex items-center space-x-2\">\n";
+        echo "<img src=\"/logo.png\" alt=\"Applicants.IO Logo\" class=\"h-8 w-auto\">\n";
+        echo "<span class=\"text-xl font-headline font-semibold\">Applicants.IO</span>\n";
+        echo "</a>\n";
+        echo "</div>\n";
+        echo "<div class=\"hidden md:flex items-center space-x-6 mt-4 md:mt-0\">\n";
+        echo "<a href=\"/\" class=\"text-gray-700 hover:text-blue-600\">Jobs</a>\n";
+        echo "<a href=\"/employer-reviews\" class=\"bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors\">Employer Reviews</a>\n";
+        echo "</div>\n";
+        echo "</nav>\n";
+        echo "</div>\n";
+        echo "</div>\n";
+        echo "</header>\n";
+        echo "<main class=\"container mx-auto px-4 py-6\">\n";
         
         // Add JobPosting schema
         sx_schema_jobposting($job);
@@ -425,6 +449,13 @@ class EnhancedSynaxusPageGenerator {
         echo "</ul>\n";
         echo "</section>\n";
         
+        echo "</main>\n";
+        echo "<footer class=\"border-t border-gray-200 mt-12 py-6\">\n";
+        echo "<div class=\"container mx-auto px-4 text-center text-gray-600\">\n";
+        echo "&copy; " . date('Y') . " Applicants.IO. All rights reserved.\n";
+        echo "</div>\n";
+        echo "</footer>\n";
+        echo "</div>\n";
         echo "</body>\n</html>\n";
         
         return ob_get_clean();

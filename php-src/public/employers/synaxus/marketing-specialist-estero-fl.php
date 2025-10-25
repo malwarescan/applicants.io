@@ -18,6 +18,9 @@
 <meta name="twitter:title" content="Marketing Specialist in Estero, FL at Synaxus Inc. — Applicants.io">
 <meta name="twitter:description" content="Develop and execute marketing campaigns, analyze performance data, and coordinate with brand teams to deliver exceptional results. Join Synaxus Inc., Southwest Florida&#039;s premier experiential marketing">
 <link rel="stylesheet" href="/assets/styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body>
 <div class="min-h-screen bg-white">
@@ -28,7 +31,7 @@
 <div class="flex items-center justify-between">
 <a href="/" class="flex items-center space-x-2">
 <img src="/logo.png" alt="Applicants.IO Logo" class="h-8 w-auto">
-<span class="text-xl font-semibold">Applicants.IO</span>
+<span class="text-xl font-headline font-semibold">Applicants.IO</span>
 </a>
 </div>
 <div class="hidden md:flex items-center space-x-6 mt-4 md:mt-0">
