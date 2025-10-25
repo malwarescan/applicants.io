@@ -1,0 +1,363 @@
+{
+    "meta": {
+        "lastUpdated": "2025-10-25T14:38:34+00:00",
+        "source": "synaxusinc.com",
+        "totalJobs": 6
+    },
+    "jobs": [
+        {
+            "title": "Field Marketing Coordinator",
+            "description": "Coordinate marketing activities in the field, manage brand ambassador teams, and ensure successful campaign execution. Work with Fortune 500 brands to deliver exceptional customer experiences.",
+            "datePosted": "2025-10-06",
+            "validThrough": "2025-12-24",
+            "employmentType": [
+                "FULL_TIME"
+            ],
+            "directApply": true,
+            "jobLocationType": "TELECOMMUTE",
+            "applicantLocationRequirements": [
+                {
+                    "@type": "Country",
+                    "name": "United States"
+                }
+            ],
+            "jobLocation": [
+                {
+                    "city": "Fort Myers",
+                    "region": "FL",
+                    "country": "US"
+                }
+            ],
+            "salary": {
+                "currency": "USD",
+                "min": 18,
+                "max": 22,
+                "unit": "HOUR"
+            },
+            "identifier": {
+                "name": "Synaxus Inc.",
+                "value": "field-marketing-coordinator-fort-myers"
+            },
+            "hiringOrganization": {
+                "name": "Synaxus Inc.",
+                "sameAs": "https://synaxusinc.com",
+                "logo": "https://synaxusinc.com/synaxus-logo.png"
+            },
+            "url": "https://synaxusinc.com/jobs/field-marketing-coordinator-fort-myers",
+            "contactEmail": "careers@synaxusinc.com",
+            "contactPhone": "+1-941-564-9169",
+            "industry": "Marketing Services",
+            "skills": "Customer Service, Sales, Marketing, Communication, Teamwork",
+            "responsibilities": "Brand representation, customer engagement, product promotion, event support",
+            "jobBenefits": [
+                "Competitive compensation",
+                "Professional development opportunities",
+                "Flexible scheduling",
+                "Career advancement potential",
+                "Fortune 500 brand partnerships"
+            ],
+            "qualifications": [
+                "Excellent communication skills",
+                "Customer service experience preferred",
+                "Professional appearance",
+                "Reliable transportation",
+                "Flexible availability"
+            ]
+        },
+        {
+            "title": "Brand Ambassador",
+            "description": "Represent brands at retail locations and events, engage with customers, and promote products effectively. Perfect opportunity for those looking to start in marketing.",
+            "datePosted": "2025-10-06",
+            "validThrough": "2025-12-24",
+            "employmentType": [
+                "PART_TIME"
+            ],
+            "directApply": true,
+            "jobLocationType": "TELECOMMUTE",
+            "applicantLocationRequirements": [
+                {
+                    "@type": "Country",
+                    "name": "United States"
+                }
+            ],
+            "jobLocation": [
+                {
+                    "city": "Naples",
+                    "region": "FL",
+                    "country": "US"
+                }
+            ],
+            "salary": {
+                "currency": "USD",
+                "min": 16,
+                "max": 20,
+                "unit": "HOUR"
+            },
+            "identifier": {
+                "name": "Synaxus Inc.",
+                "value": "brand-ambassador-naples"
+            },
+            "hiringOrganization": {
+                "name": "Synaxus Inc.",
+                "sameAs": "https://synaxusinc.com",
+                "logo": "https://synaxusinc.com/synaxus-logo.png"
+            },
+            "url": "https://synaxusinc.com/jobs/brand-ambassador-naples",
+            "contactEmail": "careers@synaxusinc.com",
+            "contactPhone": "+1-941-564-9169",
+            "industry": "Marketing Services",
+            "skills": "Customer Service, Sales, Marketing, Communication, Teamwork",
+            "responsibilities": "Brand representation, customer engagement, product promotion, event support",
+            "jobBenefits": [
+                "Competitive compensation",
+                "Professional development opportunities",
+                "Flexible scheduling",
+                "Career advancement potential",
+                "Fortune 500 brand partnerships"
+            ],
+            "qualifications": [
+                "Excellent communication skills",
+                "Customer service experience preferred",
+                "Professional appearance",
+                "Reliable transportation",
+                "Flexible availability"
+            ]
+        },
+        {
+            "title": "Sales Representative",
+            "description": "Drive sales through direct customer engagement, build relationships with retail partners, and achieve sales targets in the Southwest Florida market.",
+            "datePosted": "2025-10-06",
+            "validThrough": "2025-12-24",
+            "employmentType": [
+                "FULL_TIME"
+            ],
+            "directApply": true,
+            "jobLocationType": "TELECOMMUTE",
+            "applicantLocationRequirements": [
+                {
+                    "@type": "Country",
+                    "name": "United States"
+                }
+            ],
+            "jobLocation": [
+                {
+                    "city": "Cape Coral",
+                    "region": "FL",
+                    "country": "US"
+                }
+            ],
+            "salary": {
+                "currency": "USD",
+                "min": 20,
+                "max": 25,
+                "unit": "HOUR"
+            },
+            "identifier": {
+                "name": "Synaxus Inc.",
+                "value": "sales-representative-cape-coral"
+            },
+            "hiringOrganization": {
+                "name": "Synaxus Inc.",
+                "sameAs": "https://synaxusinc.com",
+                "logo": "https://synaxusinc.com/synaxus-logo.png"
+            },
+            "url": "https://synaxusinc.com/jobs/sales-representative-cape-coral",
+            "contactEmail": "careers@synaxusinc.com",
+            "contactPhone": "+1-941-564-9169",
+            "industry": "Marketing Services",
+            "skills": "Customer Service, Sales, Marketing, Communication, Teamwork",
+            "responsibilities": "Brand representation, customer engagement, product promotion, event support",
+            "jobBenefits": [
+                "Competitive compensation",
+                "Professional development opportunities",
+                "Flexible scheduling",
+                "Career advancement potential",
+                "Fortune 500 brand partnerships"
+            ],
+            "qualifications": [
+                "Excellent communication skills",
+                "Customer service experience preferred",
+                "Professional appearance",
+                "Reliable transportation",
+                "Flexible availability"
+            ]
+        },
+        {
+            "title": "Event Staff",
+            "description": "Support events and activations, assist with setup and teardown, and ensure smooth event operations for various marketing campaigns.",
+            "datePosted": "2025-10-06",
+            "validThrough": "2025-12-24",
+            "employmentType": [
+                "CONTRACTOR"
+            ],
+            "directApply": true,
+            "jobLocationType": "TELECOMMUTE",
+            "applicantLocationRequirements": [
+                {
+                    "@type": "Country",
+                    "name": "United States"
+                }
+            ],
+            "jobLocation": [
+                {
+                    "city": "Bonita Springs",
+                    "region": "FL",
+                    "country": "US"
+                }
+            ],
+            "salary": {
+                "currency": "USD",
+                "min": 15,
+                "max": 18,
+                "unit": "HOUR"
+            },
+            "identifier": {
+                "name": "Synaxus Inc.",
+                "value": "event-staff-bonita-springs"
+            },
+            "hiringOrganization": {
+                "name": "Synaxus Inc.",
+                "sameAs": "https://synaxusinc.com",
+                "logo": "https://synaxusinc.com/synaxus-logo.png"
+            },
+            "url": "https://synaxusinc.com/jobs/event-staff-bonita-springs",
+            "contactEmail": "careers@synaxusinc.com",
+            "contactPhone": "+1-941-564-9169",
+            "industry": "Marketing Services",
+            "skills": "Customer Service, Sales, Marketing, Communication, Teamwork",
+            "responsibilities": "Brand representation, customer engagement, product promotion, event support",
+            "jobBenefits": [
+                "Competitive compensation",
+                "Professional development opportunities",
+                "Flexible scheduling",
+                "Career advancement potential",
+                "Fortune 500 brand partnerships"
+            ],
+            "qualifications": [
+                "Excellent communication skills",
+                "Customer service experience preferred",
+                "Professional appearance",
+                "Reliable transportation",
+                "Flexible availability"
+            ]
+        },
+        {
+            "title": "Marketing Specialist",
+            "description": "Develop and execute marketing campaigns, analyze performance data, and coordinate with brand teams to deliver exceptional results.",
+            "datePosted": "2025-10-06",
+            "validThrough": "2025-12-24",
+            "employmentType": [
+                "FULL_TIME"
+            ],
+            "directApply": true,
+            "jobLocationType": "TELECOMMUTE",
+            "applicantLocationRequirements": [
+                {
+                    "@type": "Country",
+                    "name": "United States"
+                }
+            ],
+            "jobLocation": [
+                {
+                    "city": "Estero",
+                    "region": "FL",
+                    "country": "US"
+                }
+            ],
+            "salary": {
+                "currency": "USD",
+                "min": 22,
+                "max": 28,
+                "unit": "HOUR"
+            },
+            "identifier": {
+                "name": "Synaxus Inc.",
+                "value": "marketing-specialist-estero"
+            },
+            "hiringOrganization": {
+                "name": "Synaxus Inc.",
+                "sameAs": "https://synaxusinc.com",
+                "logo": "https://synaxusinc.com/synaxus-logo.png"
+            },
+            "url": "https://synaxusinc.com/jobs/marketing-specialist-estero",
+            "contactEmail": "careers@synaxusinc.com",
+            "contactPhone": "+1-941-564-9169",
+            "industry": "Marketing Services",
+            "skills": "Customer Service, Sales, Marketing, Communication, Teamwork",
+            "responsibilities": "Brand representation, customer engagement, product promotion, event support",
+            "jobBenefits": [
+                "Competitive compensation",
+                "Professional development opportunities",
+                "Flexible scheduling",
+                "Career advancement potential",
+                "Fortune 500 brand partnerships"
+            ],
+            "qualifications": [
+                "Excellent communication skills",
+                "Customer service experience preferred",
+                "Professional appearance",
+                "Reliable transportation",
+                "Flexible availability"
+            ]
+        },
+        {
+            "title": "Customer Service Representative",
+            "description": "Provide excellent customer service, handle inquiries, and support brand ambassador teams with administrative and operational tasks.",
+            "datePosted": "2025-10-06",
+            "validThrough": "2025-12-24",
+            "employmentType": [
+                "FULL_TIME"
+            ],
+            "directApply": true,
+            "jobLocationType": "TELECOMMUTE",
+            "applicantLocationRequirements": [
+                {
+                    "@type": "Country",
+                    "name": "United States"
+                }
+            ],
+            "jobLocation": [
+                {
+                    "city": "Lehigh Acres",
+                    "region": "FL",
+                    "country": "US"
+                }
+            ],
+            "salary": {
+                "currency": "USD",
+                "min": 17,
+                "max": 21,
+                "unit": "HOUR"
+            },
+            "identifier": {
+                "name": "Synaxus Inc.",
+                "value": "customer-service-representative-lehigh-acres"
+            },
+            "hiringOrganization": {
+                "name": "Synaxus Inc.",
+                "sameAs": "https://synaxusinc.com",
+                "logo": "https://synaxusinc.com/synaxus-logo.png"
+            },
+            "url": "https://synaxusinc.com/jobs/customer-service-representative-lehigh-acres",
+            "contactEmail": "careers@synaxusinc.com",
+            "contactPhone": "+1-941-564-9169",
+            "industry": "Marketing Services",
+            "skills": "Customer Service, Sales, Marketing, Communication, Teamwork",
+            "responsibilities": "Brand representation, customer engagement, product promotion, event support",
+            "jobBenefits": [
+                "Competitive compensation",
+                "Professional development opportunities",
+                "Flexible scheduling",
+                "Career advancement potential",
+                "Fortune 500 brand partnerships"
+            ],
+            "qualifications": [
+                "Excellent communication skills",
+                "Customer service experience preferred",
+                "Professional appearance",
+                "Reliable transportation",
+                "Flexible availability"
+            ]
+        }
+    ]
+}

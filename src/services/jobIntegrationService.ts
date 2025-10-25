@@ -61,7 +61,7 @@ class JobIntegrationService {
 
   /**
    * Fetch jobs from synaxusinc.com
-   * Since you own both sites, this can be a direct integration
+   * Uses our own PHP API endpoint that scrapes and caches Synaxus JobPosting schema data
    */
   async fetchSynaxusJobs(): Promise<ExternalJob[]> {
     if (!this.config.enabled) {
@@ -75,34 +75,89 @@ class JobIntegrationService {
     try {
       await this.rateLimit();
 
-      // Direct fetch from your synaxusinc.com site
-      const response = await fetch('https://synaxusinc.com/api/jobs', {
+      // Fetch from our PHP API endpoint that serves scraped Synaxus jobs
+      const apiUrl = typeof window !== 'undefined' 
+        ? '/api/synaxus-jobs.php'  // Relative URL for client-side
+        : 'http://localhost/api/synaxus-jobs.php';  // Full URL for server-side
+
+      const response = await fetch(apiUrl, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          // Add any authentication headers if needed
-          // 'Authorization': 'Bearer YOUR_API_KEY',
         },
       });
 
       if (!response.ok) {
-        // Fallback: try scraping the careers page if API is not available
-        return await this.scrapeSynaxusJobs();
+        throw new Error(`API returned status ${response.status}`);
       }
 
       const data = await response.json();
-      return this.validateAndTransformJobs(data);
+      
+      if (!data.success) {
+        throw new Error(data.error || 'Failed to fetch jobs');
+      }
+
+      // Transform our internal format to ExternalJob format
+      return this.transformSynaxusJobsToExternal(data.jobs || []);
     } catch (error) {
       console.error('Error fetching Synaxus jobs via API:', error);
-      // Fallback to scraping if API fails
-      try {
-        return await this.scrapeSynaxusJobs();
-      } catch (scrapeError) {
-        console.error('Error scraping Synaxus jobs:', scrapeError);
-        throw new Error('Failed to fetch jobs from both API and scraping methods');
-      }
+      throw new Error('Failed to fetch Synaxus jobs');
     }
+  }
+
+  /**
+   * Transform Synaxus job data to ExternalJob format
+   */
+  private transformSynaxusJobsToExternal(jobs: any[]): ExternalJob[] {
+    return jobs.map((job) => ({
+      id: job.identifier?.value || `synaxus-${Date.now()}`,
+      title: job.title || 'Untitled Position',
+      company: job.hiringOrganization?.name || 'Synaxus Inc.',
+      location: this.formatLocation(job.jobLocation),
+      industry: job.industry || 'Marketing Services',
+      postedDate: job.datePosted || new Date().toISOString().split('T')[0],
+      compensation: this.formatCompensation(job.salary),
+      description: job.description || 'No description available',
+      source: 'Synaxus Inc.',
+      sourceUrl: job.url || 'https://synaxusinc.com',
+      contactEmail: job.contactEmail,
+      contactPhone: job.contactPhone,
+    }));
+  }
+
+  /**
+   * Format job location from jobLocation array
+   */
+  private formatLocation(jobLocation: any[]): string {
+    if (!jobLocation || jobLocation.length === 0) {
+      return 'Location TBD';
+    }
+
+    const loc = jobLocation[0];
+    const parts = [];
+    if (loc.city) parts.push(loc.city);
+    if (loc.region) parts.push(loc.region);
+    
+    return parts.length > 0 ? parts.join(', ') : 'Location TBD';
+  }
+
+  /**
+   * Format compensation from salary object
+   */
+  private formatCompensation(salary: any): string | undefined {
+    if (!salary) return undefined;
+
+    const { min, max, currency, unit } = salary;
+    const currencySymbol = currency === 'USD' ? '$' : currency;
+
+    if (min !== null && max !== null) {
+      return `${currencySymbol}${min} - ${currencySymbol}${max} per ${unit.toLowerCase()}`;
+    } else if (min !== null) {
+      return `${currencySymbol}${min}+ per ${unit.toLowerCase()}`;
+    }
+
+    return undefined;
   }
 
   /**
