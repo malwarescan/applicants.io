@@ -1,0 +1,9 @@
+Name,Type,Value,TTL,Notes
+applicants.io,A,66.29.146.93,14400,Root for redirect
+www.applicants.io,CNAME,nm7lqz3e.up.railway.app,14400,Railway app
+mail.applicants.io,A,66.29.146.93,14400,Mail server
+applicants.io,MX,mx1-hosting.jellyfish.systems,14400,Mail routing
+default._domainkey.applicants.io,TXT,"v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwpO2N73BFKUobXr1uMkRtAmHDkHmcDksUO1FIZ0DS+M3nIuArANswLP7dl/eH3HG00ISb/vclfl28qi23rZcD2t/IbRqvN+O6/waUs/W56GhSB9DQY3C/Fk1wR9ttbhD1WHvplFGbmw5ehvnLMY2vZXlbDaflMphQtfp5k5fneFn669gNCLqQfYYFQCrbbZHPOssz54odI+vPzb39v2ImMfTOPg8yUfzxzJJSRe2SJ20Q5ecradK6iJ1yXVbLGqjIO6XDwkm9V5YFCpiU6CLculDoQlpWEDXeoaLXFhxxwZOM4Iz2Rc4eLKoenXLmbWRRqLjUw0SyZ1nFFZvK256qwIDAQAB;",14400,Email auth
+_dmarc.applicants.io,TXT,v=DMARC1; p=none;,14400,Email auth
+re4jo2o2oxcr.applicants.io,CNAME,gv-gcrmsmv7mkszro.dv.googlehosted.com,14400,GSC verification
+gv-gcrmsmv7mkszro.dv.googlehosted.com.applicants.io,CNAME,re4jo2o2oxcr,14400,GSC verification

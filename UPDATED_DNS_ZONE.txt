@@ -1,0 +1,24 @@
+# Clean DNS Zone for applicants.io
+# Add these records in cPanel DNS Zone Editor
+
+# REQUIRED CHANGES:
+
+1. FIX WWW CNAME (CHANGE):
+   www.applicants.io CNAME nm7lqz3e.up.railway.app
+
+2. ADD MX RECORD:
+   applicants.io MX mx1-hosting.jellyfish.systems
+
+3. DELETE THESE RECORDS:
+   - autoconfig.applicants.io A 66.29.146.93
+   - _autodiscover._tcp.applicants.io SRV cpanelemaildiscovery.cpanel.net
+   - autodiscover.applicants.io A 66.29.146.93
+
+# KEEP THESE (DO NOT DELETE):
+- applicants.io A 66.29.146.93 ✅
+- www.applicants.io CNAME nm7lqz3e.up.railway.app ✅ (after fix)
+- mail.applicants.io A 66.29.146.93 ✅
+- default._domainkey.applicants.io TXT ✅
+- _dmarc.applicants.io TXT ✅
+- re4jo2o2oxcr.applicants.io CNAME ✅
+- gv-gcrmsmv7mkszro.dv.googlehosted.com.applicants.io CNAME ✅
