@@ -92,8 +92,11 @@ function ai_schema_employer_agg(string $employerName, string $employerUrl, array
     ];
   }, array_slice($verified, 0, 20), array_keys(array_slice($verified, 0, 20))); // keep payload reasonable
 
-  // Add the reviews to the aggregate rating
-  $aggregateRating["review"] = $reviews;
+  // Add the reviews to the aggregate rating - ensure they have aggregateRating property
+  $aggregateRating["review"] = array_map(function($review) {
+    $review["aggregateRating"] = ["@id" => "#aggregateRating"];
+    return $review;
+  }, $reviews);
 
   // Create the main structured data with both organization and aggregate rating
   $doc = [
