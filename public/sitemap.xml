@@ -16,4 +16,8 @@
     <loc>https://applicants.io/sitemaps/category-location.xml</loc>
     <lastmod>2025-09-24</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>https://www.applicants.io/sitemaps/synaxus-jobs.xml</loc>
+    <lastmod>2025-10-25</lastmod>
+  </sitemap>
 </sitemapindex>
