@@ -49,66 +49,26 @@ function ai_stars(int $rating): string {
 
 /** EmployerAggregateRating JSON-LD (emitted only if ≥ 5 verified) */
 function ai_schema_employer_agg(string $employerName, string $employerUrl, array $verified, float $avg, int $count): string {
-  // Create the organization that supports reviews
+  // Create the organization that is being rated
   $organization = [
     "@type" => "Organization",
     "name" => $employerName,
-    "url" => $employerUrl,
     "sameAs" => $employerUrl
   ];
 
-  // Create individual reviews with embedded aggregate rating
-  $reviews = array_map(function($r) use ($organization, $avg, $count) {
-    return [
-      "@type" => "Review",
-      "author" => [
-        "@type" => "Person",
-        "name" => $r['authorRole'] ?: "Employee"
-      ],
-      "datePublished" => $r['date'],
-      "name" => $r['title'],
-      "reviewBody" => $r['body'],
-      "reviewRating" => [
-        "@type" => "Rating",
-        "ratingValue" => (string)$r['rating'],
-        "bestRating" => "5",
-        "worstRating" => "1"
-      ],
-      "itemReviewed" => $organization,
-      "aggregateRating" => [
-        "@type" => "EmployerAggregateRating",
-        "itemReviewed" => $organization,
-        "ratingValue" => (string)$avg,
-        "bestRating" => "5",
-        "worstRating" => "1",
-        "ratingCount" => (string)$count,
-        "reviewCount" => (string)$count
-      ]
-    ];
-  }, array_slice($verified, 0, 20)); // keep payload reasonable
-
-  // Create the main aggregate rating
+  // Create the main EmployerAggregateRating following Google's guidelines exactly
   $aggregateRating = [
+    "@context" => "https://schema.org/",
     "@type" => "EmployerAggregateRating",
     "itemReviewed" => $organization,
     "ratingValue" => (string)$avg,
     "bestRating" => "5",
     "worstRating" => "1",
     "ratingCount" => (string)$count,
-    "reviewCount" => (string)$count,
-    "review" => $reviews
-  ];
-
-  // Create the main structured data
-  $doc = [
-    "@context" => "https://schema.org",
-    "@graph" => [
-      $organization,
-      $aggregateRating
-    ]
+    "reviewCount" => (string)$count
   ];
   
-  return '<script type="application/ld+json">'.json_encode($doc, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE).'</script>';
+  return '<script type="application/ld+json">'.json_encode($aggregateRating, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE).'</script>';
 }
 
 /** Minimal head/footer */
