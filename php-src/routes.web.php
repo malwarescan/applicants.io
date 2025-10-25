@@ -97,4 +97,37 @@ return [
       'canonical' => '/employers/'
     ]);
   },
+  
+  // Serve sitemap files
+  '#^/sitemap\.xml$#' => function() {
+    $sitemapFile = __DIR__ . '/public/sitemap.xml';
+    if (file_exists($sitemapFile)) {
+      header('Content-Type: application/xml');
+      echo file_get_contents($sitemapFile);
+      exit;
+    }
+    return ["", "<h1>404 - Sitemap Not Found</h1>"];
+  },
+  
+  '#^/sitemaps/(?P<file>[^/]+\.xml)$#' => function($p) {
+    $file = $p['file'] ?? '';
+    $sitemapFile = __DIR__ . '/public/sitemaps/' . $file;
+    if (file_exists($sitemapFile)) {
+      header('Content-Type: application/xml');
+      echo file_get_contents($sitemapFile);
+      exit;
+    }
+    return ["", "<h1>404 - Sitemap Not Found</h1>"];
+  },
+  
+  // Serve robots.txt
+  '#^/robots\.txt$#' => function() {
+    $robotsFile = __DIR__ . '/public/robots.txt';
+    if (file_exists($robotsFile)) {
+      header('Content-Type: text/plain');
+      echo file_get_contents($robotsFile);
+      exit;
+    }
+    return ["", ""];
+  },
 ];
