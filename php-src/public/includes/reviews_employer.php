@@ -51,27 +51,14 @@ function ai_stars(int $rating): string {
 function ai_schema_employer_agg(string $employerName, string $employerUrl, array $verified, float $avg, int $count): string {
   // Create the organization that supports reviews
   $organization = [
-    "@id" => "#organization",
     "@type" => "Organization",
     "name" => $employerName,
     "url" => $employerUrl,
     "sameAs" => $employerUrl
   ];
 
-  // Create the aggregate rating with proper ID
-  $aggregateRating = [
-    "@id" => "#aggregateRating",
-    "@type" => "EmployerAggregateRating",
-    "itemReviewed" => ["@id" => "#organization"],
-    "ratingValue" => (string)$avg,
-    "bestRating" => "5",
-    "worstRating" => "1",
-    "ratingCount" => (string)$count,
-    "reviewCount" => (string)$count
-  ];
-
-  // Create individual reviews that reference the aggregate rating
-  $reviews = array_map(function($r, $index) {
+  // Create individual reviews with embedded aggregate rating
+  $reviews = array_map(function($r) use ($organization, $avg, $count) {
     return [
       "@type" => "Review",
       "author" => [
@@ -87,18 +74,32 @@ function ai_schema_employer_agg(string $employerName, string $employerUrl, array
         "bestRating" => "5",
         "worstRating" => "1"
       ],
-      "itemReviewed" => ["@id" => "#organization"],
-      "aggregateRating" => ["@id" => "#aggregateRating"]
+      "itemReviewed" => $organization,
+      "aggregateRating" => [
+        "@type" => "EmployerAggregateRating",
+        "itemReviewed" => $organization,
+        "ratingValue" => (string)$avg,
+        "bestRating" => "5",
+        "worstRating" => "1",
+        "ratingCount" => (string)$count,
+        "reviewCount" => (string)$count
+      ]
     ];
-  }, array_slice($verified, 0, 20), array_keys(array_slice($verified, 0, 20))); // keep payload reasonable
+  }, array_slice($verified, 0, 20)); // keep payload reasonable
 
-  // Add the reviews to the aggregate rating - ensure they have aggregateRating property
-  $aggregateRating["review"] = array_map(function($review) {
-    $review["aggregateRating"] = ["@id" => "#aggregateRating"];
-    return $review;
-  }, $reviews);
+  // Create the main aggregate rating
+  $aggregateRating = [
+    "@type" => "EmployerAggregateRating",
+    "itemReviewed" => $organization,
+    "ratingValue" => (string)$avg,
+    "bestRating" => "5",
+    "worstRating" => "1",
+    "ratingCount" => (string)$count,
+    "reviewCount" => (string)$count,
+    "review" => $reviews
+  ];
 
-  // Create the main structured data with both organization and aggregate rating
+  // Create the main structured data
   $doc = [
     "@context" => "https://schema.org",
     "@graph" => [
