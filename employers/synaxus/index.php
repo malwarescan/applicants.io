@@ -1,1 +1,39 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Synaxus Inc. Careers — Applicants.io</title><meta name="description" content="Join Synaxus Inc., Southwest Florida&#039;s premier experiential marketing agency. Work with Fortune 500 brands in Fort Myers, Naples, Cape Coral, and more."><link rel="canonical" href="https://www.applicants.io/employers/synaxus/"></head><body><header><h1>Synaxus Inc. Career Opportunities</h1></header><section class='intro'><p>Synaxus Inc. is Southwest Florida's premier experiential marketing agency, established for over a decade. We partner with Fortune 500 brands to deliver exceptional customer experiences across the region.</p></section><section class='job-listings'><h2>Current Openings</h2><ul class='job-links'><li><a href='/field-marketing-coordinator-fort-myers-fl.php'>Field Marketing Coordinator</a></li><li><a href='/brand-ambassador-naples-fl.php'>Brand Ambassador</a></li><li><a href='/sales-representative-cape-coral-fl.php'>Sales Representative</a></li><li><a href='/event-staff-bonita-springs-fl.php'>Event Staff</a></li><li><a href='/marketing-specialist-estero-fl.php'>Marketing Specialist</a></li><li><a href='/customer-service-representative-lehigh-acres-fl.php'>Customer Service Representative</a></li></ul></section></body></html>
+<?php
+// Force cache busting
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
+
+require_once __DIR__ . '/../../../app/bootstrap.php';
+require_once __DIR__ . '/../../includes/reviews_employer.php';
+use App\Renderer;
+
+$path = __DIR__ . '/../../data/synaxus_reviews.json';
+$data = ai_load_reviews($path);
+
+$employerName = (string)($data['meta']['employerName'] ?? 'Synaxus Inc');
+$employerUrl  = (string)($data['meta']['employerUrl'] ?? '');
+$verified = ai_verified_reviews($data);
+$agg = ai_aggregate($verified);
+
+// Generate structured data if we have enough reviews
+$structuredData = null;
+if ($agg['count'] >= 5) {
+  $structuredData = ai_schema_employer_agg($employerName, $employerUrl, $verified, (float)$agg['avg'], (int)$agg['count']);
+}
+
+// Use the main site's renderer
+[$head, $body] = Renderer::render('employer-reviews', [
+  'employerName' => $employerName,
+  'employerUrl' => $employerUrl,
+  'verified' => $verified,
+  'agg' => $agg,
+  'structuredData' => $structuredData
+], [
+  'title' => $employerName . " — Employee Reviews & Ratings | Applicants.io",
+  'desc' => "Read verified, public employee reviews and ratings for " . $employerName . " hosted by Applicants.io.",
+  'canonical' => "https://www.applicants.io/employers/synaxus",
+  'jsonld' => $structuredData ? json_decode(str_replace(['<script type="application/ld+json">', '</script>'], '', $structuredData), true) : null
+]);
+
+require __DIR__ . '/../../../views/layout.php';
