@@ -3,6 +3,103 @@ use App\Renderer;
 use App\Data;
 
 return [
+  // Serve favicon files - must be first to catch before other routes
+  '#^/favicon\.ico$#' => function() {
+    $faviconFile = __DIR__ . '/public/favicon.ico';
+    if (file_exists($faviconFile)) {
+      header('Content-Type: image/x-icon');
+      header('Cache-Control: public, max-age=31536000');
+      readfile($faviconFile);
+      exit;
+    }
+    http_response_code(404);
+    exit;
+  },
+  
+  '#^/favicon\.svg$#' => function() {
+    $faviconFile = __DIR__ . '/public/favicon.svg';
+    if (file_exists($faviconFile)) {
+      header('Content-Type: image/svg+xml');
+      header('Cache-Control: public, max-age=31536000');
+      readfile($faviconFile);
+      exit;
+    }
+    http_response_code(404);
+    exit;
+  },
+  
+  '#^/favicon-16x16\.png$#' => function() {
+    $faviconFile = __DIR__ . '/public/favicon-16x16.png';
+    if (file_exists($faviconFile)) {
+      header('Content-Type: image/png');
+      header('Cache-Control: public, max-age=31536000');
+      readfile($faviconFile);
+      exit;
+    }
+    http_response_code(404);
+    exit;
+  },
+  
+  '#^/favicon-32x32\.png$#' => function() {
+    $faviconFile = __DIR__ . '/public/favicon-32x32.png';
+    if (file_exists($faviconFile)) {
+      header('Content-Type: image/png');
+      header('Cache-Control: public, max-age=31536000');
+      readfile($faviconFile);
+      exit;
+    }
+    http_response_code(404);
+    exit;
+  },
+  
+  '#^/favicon-192\.png$#' => function() {
+    $faviconFile = __DIR__ . '/public/favicon-192.png';
+    if (file_exists($faviconFile)) {
+      header('Content-Type: image/png');
+      header('Cache-Control: public, max-age=31536000');
+      readfile($faviconFile);
+      exit;
+    }
+    http_response_code(404);
+    exit;
+  },
+  
+  '#^/apple-touch-icon\.png$#' => function() {
+    $faviconFile = __DIR__ . '/public/apple-touch-icon.png';
+    if (file_exists($faviconFile)) {
+      header('Content-Type: image/png');
+      header('Cache-Control: public, max-age=31536000');
+      readfile($faviconFile);
+      exit;
+    }
+    http_response_code(404);
+    exit;
+  },
+  
+  '#^/site\.webmanifest$#' => function() {
+    $manifestFile = __DIR__ . '/public/site.webmanifest';
+    if (file_exists($manifestFile)) {
+      header('Content-Type: application/manifest+json');
+      header('Cache-Control: public, max-age=86400');
+      readfile($manifestFile);
+      exit;
+    }
+    http_response_code(404);
+    exit;
+  },
+  
+  '#^/logo\.png$#' => function() {
+    $logoFile = __DIR__ . '/public/logo.png';
+    if (file_exists($logoFile)) {
+      header('Content-Type: image/png');
+      header('Cache-Control: public, max-age=31536000');
+      readfile($logoFile);
+      exit;
+    }
+    http_response_code(404);
+    exit;
+  },
+  
   '#^/$#' => function() {
     return Renderer::render('home', [], ['title'=>'Job Listings - Applicants.IO','desc'=>'Find your next career opportunity with our comprehensive job listings.','canonical'=>'/']);
   },
