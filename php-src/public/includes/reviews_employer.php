@@ -47,28 +47,79 @@ function ai_stars(int $rating): string {
   return $filled . $empty;
 }
 
-/** EmployerAggregateRating JSON-LD (emitted only if ≥ 5 verified) */
-function ai_schema_employer_agg(string $employerName, string $employerUrl, array $verified, float $avg, int $count): string {
-  // Create the organization that is being rated
-  $organization = [
-    "@type" => "Organization",
-    "name" => $employerName,
-    "sameAs" => $employerUrl
-  ];
-
-  // Create the main EmployerAggregateRating following Google's guidelines exactly
-  $aggregateRating = [
-    "@context" => "https://schema.org/",
-    "@type" => "EmployerAggregateRating",
-    "itemReviewed" => $organization,
-    "ratingValue" => (string)$avg,
-    "bestRating" => "5",
-    "worstRating" => "1",
-    "ratingCount" => (string)$count,
-    "reviewCount" => (string)$count
+/** EmployerAggregateRating JSON-LD (emitted only if ≥ 5 verified)
+ * Returns array structure for @graph format with publisher
+ */
+function ai_schema_employer_agg(string $employerName, string $employerUrl, array $verified, float $avg, int $count, ?string $employerSlug = null): array {
+  // Use provided slug or generate from name
+  if (empty($employerSlug)) {
+    $employerSlug = strtolower(str_replace([' ', ' Inc', ' Inc.', ' LLC', ' Corporation'], '', $employerName));
+    $employerSlug = preg_replace('/[^a-z0-9]/', '', $employerSlug);
+  }
+  
+  // Build @graph structure with publisher and reviewed organization
+  $graph = [
+    // Publisher: Applicants.io (independent reviewer)
+    [
+      "@type" => "Organization",
+      "@id" => "https://www.applicants.io/#publisher",
+      "name" => "Applicants.io",
+      "url" => "https://www.applicants.io/",
+      "description" => "Independent employer review and recruiting platform aggregating verified employee feedback about hiring organizations.",
+      "sameAs" => [
+        "https://www.linkedin.com/company/applicants-io"
+      ],
+      "logo" => [
+        "@type" => "ImageObject",
+        "url" => "https://www.applicants.io/favicon-192.png"
+      ]
+    ],
+    // Reviewed Organization: The employer being rated
+    [
+      "@type" => "Organization",
+      "@id" => "https://www.applicants.io/employers/" . $employerSlug . "#organization",
+      "name" => $employerName,
+      "url" => !empty($employerUrl) ? $employerUrl : "https://www.applicants.io/employers/" . $employerSlug
+    ],
+    // EmployerAggregateRating: The rating data
+    [
+      "@type" => "EmployerAggregateRating",
+      "@id" => "https://www.applicants.io/employers/" . $employerSlug . "#employerAggregateRating",
+      "itemReviewed" => ["@id" => "https://www.applicants.io/employers/" . $employerSlug . "#organization"],
+      "ratingValue" => (string)number_format($avg, 1),
+      "bestRating" => "5",
+      "worstRating" => "1",
+      "reviewCount" => (string)$count,
+      "author" => ["@id" => "https://www.applicants.io/#publisher"]
+    ]
   ];
   
-  return '<script type="application/ld+json">'.json_encode($aggregateRating, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE).'</script>';
+  // Optionally add representative Review nodes (first 3 verified reviews)
+  $representativeReviews = array_slice($verified, 0, 3);
+  foreach ($representativeReviews as $review) {
+    $graph[] = [
+      "@type" => "Review",
+      "author" => [
+        "@type" => "Person",
+        "name" => ($review['authorRole'] ?? 'Employee') . ($review['location'] ? ' (' . $review['location'] . ')' : '')
+      ],
+      "datePublished" => $review['date'] ?? date('Y-m-d'),
+      "reviewBody" => ($review['title'] ?? '') . '. ' . ($review['body'] ?? ''),
+      "reviewRating" => [
+        "@type" => "Rating",
+        "ratingValue" => (string)($review['rating'] ?? 5),
+        "bestRating" => "5",
+        "worstRating" => "1"
+      ],
+      "itemReviewed" => ["@id" => "https://www.applicants.io/employers/" . $employerSlug . "#organization"],
+      "publisher" => ["@id" => "https://www.applicants.io/#publisher"]
+    ];
+  }
+  
+  return [
+    "@context" => "https://schema.org",
+    "@graph" => $graph
+  ];
 }
 
 /** Minimal head/footer */

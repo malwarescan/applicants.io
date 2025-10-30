@@ -17,9 +17,9 @@ $verified = ai_verified_reviews($data);
 $agg = ai_aggregate($verified);
 
 // Generate structured data if we have enough reviews
-$structuredData = null;
+$jsonLd = null;
 if ($agg['count'] >= 5) {
-  $structuredData = ai_schema_employer_agg($employerName, $employerUrl, $verified, (float)$agg['avg'], (int)$agg['count']);
+  $jsonLd = ai_schema_employer_agg($employerName, $employerUrl, $verified, (float)$agg['avg'], (int)$agg['count'], 'synaxus');
 }
 
 // Use the main site's renderer
@@ -28,12 +28,12 @@ if ($agg['count'] >= 5) {
   'employerUrl' => $employerUrl,
   'verified' => $verified,
   'agg' => $agg,
-  'structuredData' => $structuredData
+  'structuredData' => $jsonLd // Keep for backward compatibility if needed
 ], [
   'title' => $employerName . " — Employee Reviews & Ratings | Applicants.io",
   'desc' => "Read verified, public employee reviews and ratings for " . $employerName . " hosted by Applicants.io.",
   'canonical' => "https://www.applicants.io/employers/synaxus",
-  'jsonld' => $structuredData ? json_decode(str_replace(['<script type="application/ld+json">', '</script>'], '', $structuredData), true) : null
+  'jsonld' => $jsonLd // Pass array directly to Seo::head()
 ]);
 
 require __DIR__ . '/../../../views/layout.php';
