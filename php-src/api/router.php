@@ -36,6 +36,24 @@ switch ($path) {
         }
         break;
         
+    case '/jobs-chatgpt':
+        if ($method === 'GET') {
+            require __DIR__.'/jobs-chatgpt.php';
+        } else {
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
+        }
+        break;
+        
+    case '/apply-job':
+        if ($method === 'POST') {
+            require __DIR__.'/apply-job.php';
+        } else {
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
+        }
+        break;
+        
     default:
         http_response_code(404);
         echo json_encode(['error' => 'Not found']);

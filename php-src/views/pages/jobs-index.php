@@ -185,6 +185,24 @@ sort($availableIndustries);
                                     <div class="mt-3 text-sm text-gray-600">
                                         <?= htmlspecialchars(substr($job['description'], 0, 200)) ?>...
                                     </div>
+                                    
+                                    <!-- Quick Apply Actions -->
+                                    <div class="mt-4 flex gap-2">
+                                        <?php
+                                        // Generate SMS link with prefilled message
+                                        $smsPhone = '+13147746099';
+                                        $smsMessage = 'Hi, I\'m interested in applying for the ' . htmlspecialchars($job['title']) . ' position in ' . htmlspecialchars($job['location']) . '.';
+                                        $smsLink = 'sms:' . $smsPhone . '?body=' . urlencode($smsMessage);
+                                        ?>
+                                        <a href="<?= htmlspecialchars($smsLink) ?>" 
+                                           class="inline-block bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors text-sm font-medium">
+                                            📱 Text to Apply
+                                        </a>
+                                        <a href="/jobs/<?= htmlspecialchars($job['id']) ?>" 
+                                           class="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-sm font-medium">
+                                            View Details
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

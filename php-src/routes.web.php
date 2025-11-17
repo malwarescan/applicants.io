@@ -110,35 +110,41 @@ return [
     $id = $p['id'] ?? '';
     $jobs = Data::readJson('data/jobs.json');
     $job = null;
+    
+    // Try to find by ID first, then by identifier value (slug)
     foreach ($jobs as $j) {
-      if ($j['id'] === $id) {
+      if ($j['id'] === $id || ($j['identifier']['value'] ?? '') === $id) {
         $job = $j;
         break;
       }
     }
+    
     if (!$job) {
       return ["<title>Job Not Found - Applicants.IO</title>", "<h1>404 - Job Not Found</h1>"];
     }
-    return Renderer::render('job-detail', ['id'=>$id], [
-      'title'=> $job['title'] . ' at ' . $job['company'] . ' in ' . $job['location'],
-      'desc'=> substr($job['description'], 0, 160) . '...',
-      'canonical'=>"/jobs/$id/",
-      'jsonld'=> [
-        '@context' => 'https://schema.org',
-        '@type' => 'JobPosting',
-        'title' => $job['title'],
-        'description' => $job['description'],
-        'hiringOrganization' => [
-          '@type' => 'Organization',
-          'name' => $job['company']
-        ],
-        'jobLocation' => [
-          '@type' => 'Place',
-          'address' => $job['location']
-        ],
-        'datePosted' => $job['postedDate']
-      ]
-    ]);
+    
+    // Use unified template if available, otherwise fallback
+    require_once __DIR__ . '/../includes/schema_jobposting_unified.php';
+    
+    try {
+      $jsonLd = generate_jobposting_schema($job);
+      return Renderer::render('job-detail-unified', [
+        'job' => $job,
+        'canonical' => "/jobs/$id/",
+      ], [
+        'title' => $job['title'] . ' in ' . ($job['location'] ?? '') . ' | Applicants.io',
+        'desc' => substr(strip_tags($job['description'] ?? ''), 0, 160) . '...',
+        'canonical' => "/jobs/$id/",
+        'jsonld' => $jsonLd,
+      ]);
+    } catch (Exception $e) {
+      // Fallback to old template if schema generation fails
+      return Renderer::render('job-detail', ['id'=>$job['id']], [
+        'title'=> $job['title'] . ' at ' . ($job['company'] ?? '') . ' in ' . ($job['location'] ?? ''),
+        'desc'=> substr($job['description'] ?? '', 0, 160) . '...',
+        'canonical'=>"/jobs/{$job['id']}/",
+      ]);
+    }
   },
   '#^/jobs/category/(?P<slug>[^/]+)/?$#' => function($p) {
     $slug = $p['slug'] ?? '';
