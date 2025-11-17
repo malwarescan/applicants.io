@@ -304,8 +304,13 @@ echo "Total jobs in database: " . count($allJobsFinal) . "\n";
 $pagesDir = __DIR__ . '/../php-src/public/jobs/';
 @mkdir($pagesDir, 0777, true);
 
+// Regenerate ALL job pages (not just new ones) to ensure they use slugs
+$allJobsToGenerate = array_filter($allJobsFinal, function($job) {
+    return !empty($job['identifier']['value']);
+});
+
 $generatedPages = 0;
-foreach ($newJobs as $job) {
+foreach ($allJobsToGenerate as $job) {
     $jobSlug = $job['identifier']['value'];
     $jobPageDir = $pagesDir . $jobSlug . '/';
     @mkdir($jobPageDir, 0777, true);
@@ -318,23 +323,12 @@ foreach ($newJobs as $job) {
         continue;
     }
     
-    // Render page
-    [$head, $body] = Renderer::render('job-detail-unified', [
-        'job' => $job,
-        'canonical' => "/jobs/{$jobSlug}/",
-    ], [
-        'title' => $job['title'] . ' in ' . $job['location'] . ' | Applicants.io',
-        'desc' => substr(strip_tags($job['description']), 0, 160) . '...',
-        'canonical' => "/jobs/{$jobSlug}/",
-        'jsonld' => $jsonLd,
-    ]);
+    // Extract slug from directory path
+    // Path: php-src/public/jobs/{slug}/index.php
+    // Bootstrap: php-src/app/bootstrap.php (go up 3 levels: ../../
+    $pageContent = "<?php\nrequire __DIR__ . '/../../../app/bootstrap.php';\nuse App\\Renderer;\nuse App\\Data;\n\n// Extract job slug from directory name\n\$slug = basename(dirname(__FILE__));\n\n// Load jobs and find by identifier.value (slug)\n\$jobs = Data::readJson('data/jobs.json');\n\$job = null;\nforeach (\$jobs as \$j) {\n    if ((\$j['identifier']['value'] ?? '') === \$slug) {\n        \$job = \$j;\n        break;\n    }\n}\n\nif (!\$job) {\n    http_response_code(404);\n    echo '<h1>Job Not Found</h1>';\n    exit;\n}\n\nrequire_once __DIR__ . '/../../../includes/schema_jobposting_unified.php';\n\$jsonLd = generate_jobposting_schema(\$job);\n\n[\$head, \$body] = Renderer::render('job-detail-unified', [\n    'job' => \$job,\n    'canonical' => '/jobs/' . \$slug . '/',\n], [\n    'title' => \$job['title'] . ' in ' . \$job['location'] . ' | Applicants.io',\n    'desc' => substr(strip_tags(\$job['description']), 0, 160) . '...',\n    'canonical' => '/jobs/' . \$slug . '/',\n    'jsonld' => \$jsonLd,\n]);\n\nrequire __DIR__ . '/../../../views/layout.php';\n";
     
-    // Generate full HTML
-    ob_start();
-    require __DIR__ . '/../php-src/views/layout.php';
-    $html = ob_get_clean();
-    
-    file_put_contents($jobPageDir . 'index.php', "<?php\nrequire __DIR__ . '/../../../../app/bootstrap.php';\nuse App\\Renderer;\nuse App\\Data;\n\n\$jobId = '{$job['id']}';\n\$jobs = Data::readJson('data/jobs.json');\n\$job = null;\nforeach (\$jobs as \$j) {\n    if (\$j['id'] === \$jobId) {\n        \$job = \$j;\n        break;\n    }\n}\nif (!\$job) {\n    http_response_code(404);\n    echo '<h1>Job Not Found</h1>';\n    exit;\n}\n\nrequire_once __DIR__ . '/../../../../includes/schema_jobposting_unified.php';\n\$jsonLd = generate_jobposting_schema(\$job);\n\n[\$head, \$body] = Renderer::render('job-detail-unified', [\n    'job' => \$job,\n    'canonical' => '/jobs/{$jobSlug}/',\n], [\n    'title' => \$job['title'] . ' in ' . \$job['location'] . ' | Applicants.io',\n    'desc' => substr(strip_tags(\$job['description']), 0, 160) . '...',\n    'canonical' => '/jobs/{$jobSlug}/',\n    'jsonld' => \$jsonLd,\n]);\n\nrequire __DIR__ . '/../../../../views/layout.php';\n");
+    file_put_contents($jobPageDir . 'index.php', $pageContent);
     
     $generatedPages++;
 }

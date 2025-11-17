@@ -100,20 +100,50 @@ return [
     exit;
   },
   
+  // API routes - must come before other routes
+  '#^/api/#' => function() {
+    require __DIR__ . '/api/router.php';
+    exit;
+  },
+  
+  // Serve OpenAPI schema for ChatGPT
+  '#^/gpt-action-openapi-schema\.json$#' => function() {
+    $schemaFile = __DIR__ . '/../gpt-action-openapi-schema.json';
+    if (file_exists($schemaFile)) {
+      header('Content-Type: application/json');
+      header('Access-Control-Allow-Origin: *');
+      readfile($schemaFile);
+      exit;
+    }
+    http_response_code(404);
+    echo json_encode(['error' => 'Schema not found']);
+    exit;
+  },
+  
   '#^/$#' => function() {
     return Renderer::render('home', [], ['title'=>'Job Listings - Applicants.IO','desc'=>'Find your next career opportunity with our comprehensive job listings.','canonical'=>'/']);
   },
   '#^/jobs/?$#' => function() {
     return Renderer::render('jobs-index', [], ['title'=>'Job Listings - Applicants.IO','desc'=>'Find your next career opportunity with our comprehensive job listings.','canonical'=>'/jobs/']);
   },
-  '#^/jobs/(?P<id>[^/]+)/?$#' => function($p) {
-    $id = $p['id'] ?? '';
+  '#^/jobs/(?P<slug>[^/]+)/?$#' => function($p) {
+    $slug = $p['slug'] ?? '';
+    
+    // First, check if there's a static PHP file for this slug
+    // routes.web.php is in php-src/, public/ is also in php-src/
+    $staticFile = __DIR__ . '/public/jobs/' . $slug . '/index.php';
+    if (file_exists($staticFile)) {
+      include $staticFile;
+      exit;
+    }
+    
+    // If no static file, look up in database by slug (identifier.value) or ID
     $jobs = Data::readJson('data/jobs.json');
     $job = null;
     
-    // Try to find by ID first, then by identifier value (slug)
+    // Try to find by identifier value (slug) first, then by ID
     foreach ($jobs as $j) {
-      if ($j['id'] === $id || ($j['identifier']['value'] ?? '') === $id) {
+      if (($j['identifier']['value'] ?? '') === $slug || $j['id'] === $slug) {
         $job = $j;
         break;
       }
@@ -130,11 +160,11 @@ return [
       $jsonLd = generate_jobposting_schema($job);
       return Renderer::render('job-detail-unified', [
         'job' => $job,
-        'canonical' => "/jobs/$id/",
+        'canonical' => "/jobs/$slug/",
       ], [
         'title' => $job['title'] . ' in ' . ($job['location'] ?? '') . ' | Applicants.io',
         'desc' => substr(strip_tags($job['description'] ?? ''), 0, 160) . '...',
-        'canonical' => "/jobs/$id/",
+        'canonical' => "/jobs/$slug/",
         'jsonld' => $jsonLd,
       ]);
     } catch (Exception $e) {
@@ -142,7 +172,7 @@ return [
       return Renderer::render('job-detail', ['id'=>$job['id']], [
         'title'=> $job['title'] . ' at ' . ($job['company'] ?? '') . ' in ' . ($job['location'] ?? ''),
         'desc'=> substr($job['description'] ?? '', 0, 160) . '...',
-        'canonical'=>"/jobs/{$job['id']}/",
+        'canonical'=>"/jobs/$slug/",
       ]);
     }
   },

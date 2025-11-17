@@ -98,3 +98,5 @@ curl https://www.applicants.io/employers/synaxus | grep -A 50 "application/ld+js
 
 The JSON-LD script tag should appear in the `<head>` section with the complete @graph structure.
 
+
+

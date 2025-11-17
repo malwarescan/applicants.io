@@ -165,7 +165,7 @@ sort($availableIndustries);
                             <div class="flex items-start justify-between">
                                 <div class="flex-1">
                                     <h3 class="text-lg font-medium text-gray-900">
-                                        <a href="/jobs/<?= htmlspecialchars($job['id']) ?>" class="hover:text-blue-600">
+                                        <a href="/jobs/<?= htmlspecialchars($job['identifier']['value'] ?? $job['id']) ?>" class="hover:text-blue-600">
                                             <?= htmlspecialchars($job['title']) ?>
                                         </a>
                                     </h3>
@@ -198,7 +198,7 @@ sort($availableIndustries);
                                            class="inline-block bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors text-sm font-medium">
                                             📱 Text to Apply
                                         </a>
-                                        <a href="/jobs/<?= htmlspecialchars($job['id']) ?>" 
+                                        <a href="/jobs/<?= htmlspecialchars($job['identifier']['value'] ?? $job['id']) ?>" 
                                            class="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-sm font-medium">
                                             View Details
                                         </a>

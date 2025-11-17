@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx vite",
-    "build": "echo 'Static files ready in /dist'",
+    "build": "vite build && npm run build:css",
     "start": "cd php-src/public && php -S 0.0.0.0:3000",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preview": "npx vite preview",

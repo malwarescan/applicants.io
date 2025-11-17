@@ -66,11 +66,8 @@ function render_job_card(array $job): void {
         $descriptionPreview .= '...';
     }
     
-    // Job URL
-    $jobUrl = '/jobs/' . urlencode($jobId);
-    if (!empty($job['identifier']['value'])) {
-        $jobUrl = '/jobs/' . urlencode($job['identifier']['value']);
-    }
+    // Job URL - use slug (identifier.value) not ID
+    $jobUrl = '/jobs/' . urlencode($job['identifier']['value'] ?? $jobId);
 ?>
 
 <article class="border-b border-gray-200 py-6 hover:bg-gray-50 transition-colors">
