@@ -106,17 +106,41 @@ return [
     exit;
   },
   
-  // Serve OpenAPI schema for ChatGPT
+  // Serve OpenAPI schema for ChatGPT - must come before other routes
   '#^/gpt-action-openapi-schema\.json$#' => function() {
-    $schemaFile = __DIR__ . '/../gpt-action-openapi-schema.json';
-    if (file_exists($schemaFile)) {
+    // Try multiple possible locations (Railway runs from php-src/public/)
+    $possiblePaths = [
+      __DIR__ . '/public/gpt-action-openapi-schema.json',  // Public directory (Railway)
+      __DIR__ . '/../gpt-action-openapi-schema.json',  // Root directory
+      __DIR__ . '/../public/gpt-action-openapi-schema.json',  // Public from routes dir
+      dirname(__DIR__) . '/gpt-action-openapi-schema.json',  // Absolute root
+    ];
+    
+    $schemaFile = null;
+    foreach ($possiblePaths as $path) {
+      $realPath = realpath($path);
+      if ($realPath && file_exists($realPath)) {
+        $schemaFile = $realPath;
+        break;
+      }
+    }
+    
+    if ($schemaFile && file_exists($schemaFile)) {
       header('Content-Type: application/json');
       header('Access-Control-Allow-Origin: *');
+      header('Cache-Control: public, max-age=3600');
       readfile($schemaFile);
       exit;
     }
+    
     http_response_code(404);
-    echo json_encode(['error' => 'Schema not found']);
+    header('Content-Type: application/json');
+    echo json_encode([
+      'error' => 'Schema not found',
+      'routes_dir' => __DIR__,
+      'root_dir' => dirname(__DIR__),
+      'cwd' => getcwd()
+    ]);
     exit;
   },
   
