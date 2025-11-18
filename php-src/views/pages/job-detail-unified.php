@@ -278,47 +278,62 @@ $locationTypeDisplay = $locationTypeLabels[$job['jobLocationType'] ?? ''] ?? ($j
             </div>
 
             <!-- Apply Section -->
-            <div class="bg-blue-50 rounded-lg p-6 border border-blue-200">
-                <h3 class="text-lg font-headline font-semibold mb-4 text-gray-900">How to Apply</h3>
-                <div class="space-y-3">
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 border-2 border-blue-200 shadow-sm">
+                <h3 class="text-xl font-headline font-bold mb-6 text-gray-900">How to Apply</h3>
+                
+                <div class="space-y-4">
                     <?php
                     // Generate SMS link with prefilled message
                     $smsPhone = '+13147746099';
                     $smsMessage = 'Hi, I\'m interested in applying for the ' . htmlspecialchars($job['title']) . ' position in ' . htmlspecialchars($locationDisplay) . '.';
                     $smsLink = 'sms:' . $smsPhone . '?body=' . urlencode($smsMessage);
+                    $emailAddress = 'hr@synaxusinc.com';
                     ?>
                     
-                    <!-- Text HR to Apply Button -->
+                    <!-- Text HR to Apply Button (Primary) -->
                     <a href="<?= htmlspecialchars($smsLink) ?>" 
-                       class="block w-full bg-green-600 text-white text-center px-4 py-3 rounded-md hover:bg-green-700 transition-colors font-medium">
-                        📱 Text HR to Apply
+                       class="flex items-center justify-center gap-2 w-full bg-green-600 text-white text-center px-6 py-4 rounded-lg hover:bg-green-700 transition-all font-semibold text-base shadow-md hover:shadow-lg">
+                        <span class="text-xl">📱</span>
+                        <span>Text HR to Apply</span>
                     </a>
                     
+                    <!-- Apply Online Button -->
                     <?php if (!empty($job['applicationContact']['url'])): ?>
                         <a href="<?= htmlspecialchars($job['applicationContact']['url']) ?>" 
                            target="_blank" 
                            rel="noopener noreferrer"
-                           class="block w-full bg-blue-600 text-white text-center px-4 py-3 rounded-md hover:bg-blue-700 transition-colors font-medium">
-                            Apply Online
+                           class="flex items-center justify-center gap-2 w-full bg-blue-600 text-white text-center px-6 py-4 rounded-lg hover:bg-blue-700 transition-all font-semibold text-base shadow-md hover:shadow-lg">
+                            <span>🌐</span>
+                            <span>Apply Online</span>
                         </a>
                     <?php endif; ?>
                     
-                    <?php if (!empty($job['applicationContact']['email'])): ?>
-                        <a href="mailto:<?= htmlspecialchars($job['applicationContact']['email']) ?>" 
-                           class="block w-full bg-white text-blue-600 text-center px-4 py-3 rounded-md border border-blue-600 hover:bg-blue-50 transition-colors font-medium">
-                            Email Resume
-                        </a>
-                    <?php endif; ?>
+                    <!-- Email Resume Button -->
+                    <a href="mailto:<?= htmlspecialchars($emailAddress) ?>?subject=Application for <?= urlencode($job['title']) ?>&body=Hi,%0D%0A%0D%0AI am interested in applying for the <?= urlencode($job['title']) ?> position in <?= urlencode($locationDisplay) ?>.%0D%0A%0D%0APlease find my resume attached.%0D%0A%0D%0AThank you," 
+                       class="flex items-center justify-center gap-2 w-full bg-white text-blue-600 text-center px-6 py-4 rounded-lg border-2 border-blue-600 hover:bg-blue-50 transition-all font-semibold text-base shadow-sm hover:shadow-md">
+                        <span>✉️</span>
+                        <span>Email Resume</span>
+                    </a>
                     
-                    <?php if (!empty($job['applicationContact']['phone'])): ?>
-                        <div class="text-sm text-gray-600">
-                            <strong>Phone:</strong> 
-                            <a href="tel:<?= htmlspecialchars($job['applicationContact']['phone']) ?>" 
-                               class="text-blue-600 hover:underline">
-                                <?= htmlspecialchars($job['applicationContact']['phone']) ?>
-                            </a>
+                    <!-- Contact Information -->
+                    <div class="pt-4 mt-4 border-t border-blue-200">
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center gap-2 text-gray-700">
+                                <span class="font-semibold text-gray-900">Phone:</span>
+                                <a href="tel:<?= htmlspecialchars($smsPhone) ?>" 
+                                   class="text-blue-600 hover:text-blue-800 hover:underline font-medium">
+                                    <?= htmlspecialchars($smsPhone) ?>
+                                </a>
+                            </div>
+                            <div class="flex items-center gap-2 text-gray-700">
+                                <span class="font-semibold text-gray-900">Email:</span>
+                                <a href="mailto:<?= htmlspecialchars($emailAddress) ?>" 
+                                   class="text-blue-600 hover:text-blue-800 hover:underline font-medium break-all">
+                                    <?= htmlspecialchars($emailAddress) ?>
+                                </a>
+                            </div>
                         </div>
-                    <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>
