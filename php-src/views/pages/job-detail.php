@@ -48,7 +48,7 @@ if (!$job) {
         </div>
         
         <div class="mt-8 pt-6 border-t border-gray-200">
-            <h2 class="text-xl font-headline font-bold mb-6">How to Apply</h2>
+            <h2 class="text-lg font-headline font-medium mb-4">How to Apply</h2>
             
             <?php
             // Generate SMS link with prefilled message
@@ -58,35 +58,33 @@ if (!$job) {
             $smsLink = 'sms:' . $smsPhone . '?body=' . urlencode($smsMessage);
             ?>
             
-            <div class="space-y-4">
-                <!-- Text HR to Apply Button (Primary) -->
+            <div class="space-y-3">
+                <!-- Text HR to Apply Button -->
                 <a href="<?= htmlspecialchars($smsLink) ?>" 
-                   class="flex items-center justify-center gap-2 w-full bg-green-600 text-white px-6 py-4 rounded-lg hover:bg-green-700 transition-all font-semibold text-base shadow-md hover:shadow-lg">
-                    <span class="text-xl">📱</span>
-                    <span>Text HR to Apply</span>
+                   class="block w-full bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors text-center font-medium">
+                    📱 Text HR to Apply
                 </a>
                 
                 <!-- Email Resume Button -->
                 <a href="mailto:<?= htmlspecialchars($emailAddress) ?>?subject=Application for <?= urlencode($job['title']) ?>&body=Hi,%0D%0A%0D%0AI am interested in applying for the <?= urlencode($job['title']) ?> position in <?= urlencode($job['location']) ?>.%0D%0A%0D%0APlease find my resume attached.%0D%0A%0D%0AThank you," 
-                   class="flex items-center justify-center gap-2 w-full bg-white text-blue-600 px-6 py-4 rounded-lg border-2 border-blue-600 hover:bg-blue-50 transition-all font-semibold text-base shadow-sm hover:shadow-md">
-                    <span>✉️</span>
-                    <span>Email Resume</span>
+                   class="block w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-center font-medium">
+                    Email Resume
                 </a>
                 
                 <!-- Contact Information -->
                 <div class="pt-4 mt-4 border-t border-gray-200">
-                    <div class="space-y-2 text-sm">
-                        <div class="flex items-center gap-2 text-gray-700">
-                            <span class="font-semibold text-gray-900">Phone:</span>
+                    <div class="space-y-2 text-sm text-gray-600">
+                        <div>
+                            <span class="font-medium text-gray-900">Phone:</span>
                             <a href="tel:<?= htmlspecialchars($smsPhone) ?>" 
-                               class="text-blue-600 hover:text-blue-800 hover:underline font-medium">
+                               class="text-blue-600 hover:underline ml-1">
                                 <?= htmlspecialchars($smsPhone) ?>
                             </a>
                         </div>
-                        <div class="flex items-center gap-2 text-gray-700">
-                            <span class="font-semibold text-gray-900">Email:</span>
+                        <div>
+                            <span class="font-medium text-gray-900">Email:</span>
                             <a href="mailto:<?= htmlspecialchars($emailAddress) ?>" 
-                               class="text-blue-600 hover:text-blue-800 hover:underline font-medium break-all">
+                               class="text-blue-600 hover:underline ml-1 break-all">
                                 <?= htmlspecialchars($emailAddress) ?>
                             </a>
                         </div>
