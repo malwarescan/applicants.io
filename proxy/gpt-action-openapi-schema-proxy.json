@@ -1,0 +1,269 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Applicants.io Jobs API (Proxy)",
+    "description": "Fetch real job listings from Applicants.io for Southwest Florida. All jobs include SMS application links for instant application. This is a proxy endpoint that connects to Applicants.io API.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.applicants.io",
+      "description": "Production proxy server"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Local development server"
+    }
+  ],
+  "paths": {
+    "/jobs": {
+      "get": {
+        "operationId": "get_jobs",
+        "summary": "Search for job listings",
+        "description": "Fetch live job listings from Applicants.io. Supports filtering by location, industry, employment type, and keywords. All jobs include SMS application links.",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search term or keywords for the job (e.g., 'marketing', 'retail', 'brand ambassador'). Searches across job title, company, location, and description.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "location",
+            "in": "query",
+            "description": "City or area in Southwest Florida to filter by. Options: Fort Myers, Naples, Cape Coral, Bonita Springs, Estero, Lehigh Acres, Punta Gorda, Port Charlotte, Sanibel, Marco Island, North Fort Myers, Labelle, Immokalee. Can also use 'Southwest Florida' or 'SWFL' to search all cities.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "industry",
+            "in": "query",
+            "description": "Industry or category filter (e.g., 'Retail & Field Marketing', 'Management & Leadership', 'Marketing', 'Sales', 'Retail').",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "employment_type",
+            "in": "query",
+            "description": "Filter by employment type. Valid values: 'full-time', 'part-time', 'contract', 'temporary', 'intern'.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["full-time", "part-time", "contract", "temporary", "intern"]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of job results to return. Default is 50, maximum is 100.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Pagination offset for retrieving additional results.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with job listings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Indicates if the request was successful"
+                    },
+                    "jobs": {
+                      "type": "array",
+                      "description": "Array of job listings",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Internal job ID"
+                          },
+                          "job_id": {
+                            "type": "string",
+                            "description": "Job slug identifier for URLs"
+                          },
+                          "title": {
+                            "type": "string",
+                            "description": "Job title"
+                          },
+                          "company": {
+                            "type": "string",
+                            "description": "Company name"
+                          },
+                          "location": {
+                            "type": "string",
+                            "description": "Job location (city, state)"
+                          },
+                          "employment_type": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Employment types (e.g., ['Full-time', 'Part-time'])"
+                          },
+                          "job_location_type": {
+                            "type": "string",
+                            "description": "Work setup: 'ON_SITE', 'REMOTE', or 'HYBRID'"
+                          },
+                          "salary": {
+                            "type": "string",
+                            "description": "Formatted salary range (e.g., '$16.00 - $20.00 per hour')"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "Job description (plain text)"
+                          },
+                          "qualifications": {
+                            "type": "string",
+                            "description": "Required qualifications"
+                          },
+                          "responsibilities": {
+                            "type": "string",
+                            "description": "Job responsibilities"
+                          },
+                          "skills": {
+                            "type": "string",
+                            "description": "Required skills"
+                          },
+                          "benefits": {
+                            "type": "string",
+                            "description": "Benefits offered"
+                          },
+                          "industry": {
+                            "type": "string",
+                            "description": "Industry category"
+                          },
+                          "date_posted": {
+                            "type": "string",
+                            "description": "Date job was posted (YYYY-MM-DD)"
+                          },
+                          "application_sms": {
+                            "type": "string",
+                            "description": "SMS link with prefilled message - USE THIS for 'Text HR to Apply' button. Format: sms:+13147746099?body=..."
+                          },
+                          "application_sms_phone": {
+                            "type": "string",
+                            "description": "SMS phone number (+13147746099)"
+                          },
+                          "application_sms_message": {
+                            "type": "string",
+                            "description": "Prefilled SMS message text"
+                          },
+                          "application_url": {
+                            "type": "string",
+                            "description": "Direct job page URL"
+                          },
+                          "application_email": {
+                            "type": "string",
+                            "description": "Employer email for applications"
+                          },
+                          "application_phone": {
+                            "type": "string",
+                            "description": "Employer phone number"
+                          },
+                          "application_url_external": {
+                            "type": "string",
+                            "description": "External application URL"
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of jobs matching filters"
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "description": "Results limit used"
+                        },
+                        "offset": {
+                          "type": "integer",
+                          "description": "Pagination offset used"
+                        },
+                        "has_more": {
+                          "type": "boolean",
+                          "description": "Whether more results are available"
+                        }
+                      }
+                    },
+                    "filters_applied": {
+                      "type": "object",
+                      "description": "Summary of filters that were applied",
+                      "properties": {
+                        "search": {
+                          "type": "string"
+                        },
+                        "location": {
+                          "type": "string"
+                        },
+                        "industry": {
+                          "type": "string"
+                        },
+                        "employment_type": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error - proxy failed to fetch from Applicants.io",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

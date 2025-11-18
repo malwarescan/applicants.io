@@ -7,6 +7,7 @@ $routes = [
   ['/jobs/', ['pattern'=>'#^/jobs/?$#']],
   ['/post-job/', ['pattern'=>'#^/post-job/?$#']],
   ['/contact/', ['pattern'=>'#^/contact/?$#']],
+  ['/privacy-policy/', ['pattern'=>'#^/privacy-policy/?$#']],
   ['/employer-reviews/', ['pattern'=>'#^/employer-reviews/?$#']],
   ['/employers/', ['pattern'=>'#^/employers/?$#']],
   ['/employers/synaxus/', ['pattern'=>'#^/employers/synaxus/?$#']],

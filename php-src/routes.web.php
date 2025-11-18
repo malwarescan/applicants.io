@@ -153,15 +153,7 @@ return [
   '#^/jobs/(?P<slug>[^/]+)/?$#' => function($p) {
     $slug = $p['slug'] ?? '';
     
-    // First, check if there's a static PHP file for this slug
-    // routes.web.php is in php-src/, public/ is also in php-src/
-    $staticFile = __DIR__ . '/public/jobs/' . $slug . '/index.php';
-    if (file_exists($staticFile)) {
-      include $staticFile;
-      exit;
-    }
-    
-    // If no static file, look up in database by slug (identifier.value) or ID
+    // Load jobs database first
     $jobs = Data::readJson('data/jobs.json');
     $job = null;
     
@@ -173,32 +165,48 @@ return [
       }
     }
     
-    if (!$job) {
-      return ["<title>Job Not Found - Applicants.IO</title>", "<h1>404 - Job Not Found</h1>"];
+    // If found in database, render it (preferred method)
+    if ($job) {
+      // Use unified template if available, otherwise fallback
+      $schemaFile = __DIR__ . '/includes/schema_jobposting_unified.php';
+      if (file_exists($schemaFile)) {
+        require_once $schemaFile;
+      }
+      
+      try {
+        $jsonLd = generate_jobposting_schema($job);
+        // Use the job's slug for canonical URL, not the request slug
+        $canonicalSlug = $job['identifier']['value'] ?? $job['id'];
+        return Renderer::render('job-detail-unified', [
+          'job' => $job,
+          'canonical' => "/jobs/$canonicalSlug/",
+        ], [
+          'title' => $job['title'] . ' in ' . ($job['location'] ?? '') . ' | Applicants.io',
+          'desc' => substr(strip_tags($job['description'] ?? ''), 0, 160) . '...',
+          'canonical' => "/jobs/$canonicalSlug/",
+          'jsonld' => $jsonLd,
+        ]);
+      } catch (Exception $e) {
+        // Fallback to old template if schema generation fails
+        $canonicalSlug = $job['identifier']['value'] ?? $job['id'];
+        return Renderer::render('job-detail', ['id'=>$job['id']], [
+          'title'=> $job['title'] . ' at ' . ($job['company'] ?? '') . ' in ' . ($job['location'] ?? ''),
+          'desc'=> substr($job['description'] ?? '', 0, 160) . '...',
+          'canonical'=>"/jobs/$canonicalSlug/",
+        ]);
+      }
     }
     
-    // Use unified template if available, otherwise fallback
-    require_once __DIR__ . '/../includes/schema_jobposting_unified.php';
-    
-    try {
-      $jsonLd = generate_jobposting_schema($job);
-      return Renderer::render('job-detail-unified', [
-        'job' => $job,
-        'canonical' => "/jobs/$slug/",
-      ], [
-        'title' => $job['title'] . ' in ' . ($job['location'] ?? '') . ' | Applicants.io',
-        'desc' => substr(strip_tags($job['description'] ?? ''), 0, 160) . '...',
-        'canonical' => "/jobs/$slug/",
-        'jsonld' => $jsonLd,
-      ]);
-    } catch (Exception $e) {
-      // Fallback to old template if schema generation fails
-      return Renderer::render('job-detail', ['id'=>$job['id']], [
-        'title'=> $job['title'] . ' at ' . ($job['company'] ?? '') . ' in ' . ($job['location'] ?? ''),
-        'desc'=> substr($job['description'] ?? '', 0, 160) . '...',
-        'canonical'=>"/jobs/$slug/",
-      ]);
+    // Fallback: check if there's a static PHP file for this slug
+    // routes.web.php is in php-src/, public/ is also in php-src/
+    $staticFile = __DIR__ . '/public/jobs/' . $slug . '/index.php';
+    if (file_exists($staticFile)) {
+      include $staticFile;
+      exit;
     }
+    
+    // Job not found
+    return ["<title>Job Not Found - Applicants.IO</title>", "<h1>404 - Job Not Found</h1><p>The job you're looking for doesn't exist.</p>"];
   },
   '#^/jobs/category/(?P<slug>[^/]+)/?$#' => function($p) {
     $slug = $p['slug'] ?? '';
@@ -219,6 +227,9 @@ return [
   },
   '#^/contact/?$#' => function() {
     return Renderer::render('contact', [], ['title'=>'Contact Us - Applicants.IO','desc'=>'Get in touch with us for support or questions.','canonical'=>'/contact/']);
+  },
+  '#^/privacy-policy/?$#' => function() {
+    return Renderer::render('privacy-policy', [], ['title'=>'Privacy Policy - Applicants.IO','desc'=>'Learn how Applicants.io collects, uses, and protects your personal information.','canonical'=>'/privacy-policy/']);
   },
   '#^/employer-reviews/?$#' => function() {
     // List of available employers
