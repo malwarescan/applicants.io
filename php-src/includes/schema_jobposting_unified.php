@@ -106,11 +106,18 @@ function generate_jobposting_schema(array $job): array {
     $schema['jobLocation'] = $jobLocations;
 
     // Job Location Type (RECOMMENDED)
+    // According to schema.org, only TELECOMMUTE is valid for remote jobs
+    // For on-site jobs, omit this field entirely
     if (!empty($job['jobLocationType'])) {
-        $validTypes = ['ON_SITE', 'REMOTE', 'HYBRID'];
-        if (in_array($job['jobLocationType'], $validTypes)) {
-            $schema['jobLocationType'] = $job['jobLocationType'];
+        $locType = strtoupper(trim($job['jobLocationType']));
+        
+        // Map REMOTE to TELECOMMUTE (valid schema.org value)
+        if ($locType === 'REMOTE' || $locType === 'TELECOMMUTE') {
+            $schema['jobLocationType'] = 'TELECOMMUTE';
         }
+        // For ON_SITE and HYBRID, omit the field (not valid schema.org enum values)
+        // ON_SITE is implied by having a jobLocation with address
+        // HYBRID is not a standard schema.org value, so we omit it
     }
 
     // Applicant Location Requirements (if remote/hybrid)

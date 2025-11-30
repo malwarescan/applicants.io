@@ -4,6 +4,15 @@
  * This ensures all requests go through index.php
  */
 
+// Handle www redirects (ensure consistency)
+$host = $_SERVER['HTTP_HOST'] ?? '';
+if ($host === 'applicants.io' && strpos($host, 'www.') === false) {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    $path = $_SERVER['REQUEST_URI'] ?? '/';
+    header("Location: $protocol://www.applicants.io$path", true, 301);
+    exit;
+}
+
 // If the requested file exists and is not index.php, serve it directly
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
 $requestPath = parse_url($requestUri, PHP_URL_PATH);
