@@ -8,6 +8,7 @@ interface SEOHeadProps {
   canonical?: string;
   structuredData?: object;
   ogImage?: string;
+  metaTags?: Array<{ name?: string; property?: string; content: string }>;
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
@@ -16,31 +17,45 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   keywords = 'jobs, careers, employment, job search, hiring, recruitment',
   canonical,
   structuredData,
-  ogImage
+  ogImage,
+  metaTags
 }) => {
   useEffect(() => {
     // Update document title
     document.title = title;
 
-    // Update meta description
-    updateMetaTag('description', description);
-    updateMetaTag('keywords', keywords);
+    // If metaTags array is provided, use it (for blog posts)
+    if (metaTags && metaTags.length > 0) {
+      metaTags.forEach(tag => {
+        if (tag.name) {
+          updateMetaTag(tag.name, tag.content, 'name');
+        }
+        if (tag.property) {
+          updateMetaTag(tag.property, tag.content, 'property');
+        }
+      });
+    } else {
+      // Otherwise use individual props (for regular pages)
+      // Update meta description
+      updateMetaTag('description', description);
+      updateMetaTag('keywords', keywords);
 
-    // Update canonical URL
-    if (canonical) {
-      updateCanonical(canonical);
+      // Update canonical URL
+      if (canonical) {
+        updateCanonical(canonical);
+      }
+
+      // Update Open Graph tags
+      updateMetaTag('og:title', title, 'property');
+      updateMetaTag('og:description', description, 'property');
+      updateMetaTag('og:url', window.location.href, 'property');
+      updateMetaTag('og:image', ogImage || `${window.location.origin}/logo.png`, 'property');
+
+      // Update Twitter Card tags
+      updateMetaTag('twitter:title', title);
+      updateMetaTag('twitter:description', description);
+      updateMetaTag('twitter:image', ogImage || `${window.location.origin}/logo.png`);
     }
-
-    // Update Open Graph tags
-    updateMetaTag('og:title', title, 'property');
-    updateMetaTag('og:description', description, 'property');
-    updateMetaTag('og:url', window.location.href, 'property');
-    updateMetaTag('og:image', ogImage || `${window.location.origin}/logo.png`, 'property');
-
-    // Update Twitter Card tags
-    updateMetaTag('twitter:title', title);
-    updateMetaTag('twitter:description', description);
-    updateMetaTag('twitter:image', ogImage || `${window.location.origin}/logo.png`);
 
     // Add structured data
     if (structuredData) {
@@ -51,7 +66,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     addStructuredData(generateOrganizationSchema());
     addStructuredData(generateWebsiteSchema());
 
-  }, [title, description, keywords, canonical, structuredData, ogImage]);
+  }, [title, description, keywords, canonical, structuredData, ogImage, metaTags]);
 
   return null; // This component doesn't render anything
 };

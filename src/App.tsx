@@ -14,6 +14,12 @@ import EnhancedJobDetailPage from './pages/EnhancedJobDetail';
 import SEOJobCategoryPage from './pages/SEOJobCategoryPage';
 import SitemapIndex from './pages/SitemapIndex';
 import SitemapChunk from './pages/SitemapChunk';
+import BlogListing from './pages/BlogListing';
+import BlogCategory from './pages/BlogCategory';
+import BlogPost from './pages/BlogPost';
+import BlogFeed from './pages/BlogFeed';
+import BlogJobsListing from './pages/BlogJobsListing';
+import RolePillarHub from './pages/RolePillarHub';
 
 export function App() {
   return <div className="min-h-screen bg-white">
@@ -45,6 +51,19 @@ export function App() {
             <Route path="/sitemap" element={<SitemapIndex />} />
             <Route path="/sitemap.xml" element={<SitemapIndex />} />
             <Route path="/sitemaps/:chunkId.xml" element={<SitemapChunk />} />
+            {/* Blog routes */}
+            <Route path="/blog" element={<BlogListing />} />
+            <Route path="/blog/jobs" element={<BlogJobsListing />} />
+            <Route path="/blog/:pillar" element={<BlogCategory />} />
+            {/* Role pillar hub pages */}
+            <Route path="/roles/:role" element={<RolePillarHub />} />
+            <Route path="/how-to-hire/:slug" element={<BlogPost />} />
+            <Route path="/interview-questions/:slug" element={<BlogPost />} />
+            <Route path="/hr/:slug" element={<BlogPost />} />
+            <Route path="/compliance/:slug" element={<BlogPost />} />
+            <Route path="/compensation/:slug" element={<BlogPost />} />
+            {/* Blog feed routes */}
+            <Route path="/feeds/:feedType.ndjson" element={<BlogFeed />} />
           </Routes>
         </div>
       </BrowserRouter>

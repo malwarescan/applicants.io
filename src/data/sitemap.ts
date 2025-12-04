@@ -16,6 +16,7 @@ export const SITEMAP_URLS: Record<string, string[]> = {
     `${BASE}/enhanced-jobs`,
     `${BASE}/enhanced-post-job`,
     `${BASE}/contact`,
+    `${BASE}/blog`,
   ],
 
   // Job categories (from your SEO job service)
@@ -108,6 +109,9 @@ export const SITEMAP_URLS: Record<string, string[]> = {
     `${BASE}/jobs/remote/data-analyst/`,
     `${BASE}/jobs/remote/customer-service/`,
   ],
+
+  // Blog posts (dynamically generated)
+  'blog': [],
 }
 
 // Optional: tune these defaults if you want
@@ -133,19 +137,44 @@ ${items.join('\n')}
 </sitemapindex>`
 }
 
+// Generate blog sitemap URLs (call this to populate blog chunk)
+export const generateBlogSitemapUrls = (blogPosts: Array<{ canonical: string; lastUpdated: string }>): string[] => {
+  return blogPosts.map(post => post.canonical.startsWith('http') ? post.canonical : `${BASE}${post.canonical}`)
+}
+
 // Generate individual sitemap XML
-export const generateSitemapChunk = (chunkId: string): string | null => {
-  const urls = SITEMAP_URLS[chunkId]
+export const generateSitemapChunk = (chunkId: string, blogPosts?: Array<{ canonical: string; lastUpdated: string }>): string | null => {
+  let urls = SITEMAP_URLS[chunkId]
+  
+  // If blog chunk and posts provided, generate URLs
+  if (chunkId === 'blog' && blogPosts) {
+    urls = generateBlogSitemapUrls(blogPosts)
+  }
+  
   if (!urls || !Array.isArray(urls)) {
     return null
   }
 
-  const nodes = urls.map((loc) => `  <url>
+  const nodes = urls.map((loc) => {
+    // For blog posts, try to extract lastmod from blogPosts if provided
+    let postLastmod = lastmod()
+    if (chunkId === 'blog' && blogPosts) {
+      const post = blogPosts.find(p => {
+        const postUrl = p.canonical.startsWith('http') ? p.canonical : `${BASE}${p.canonical}`
+        return postUrl === loc
+      })
+      if (post) {
+        postLastmod = post.lastUpdated.split('T')[0] // Extract date part
+      }
+    }
+    
+    return `  <url>
     <loc>${loc}</loc>
-    <lastmod>${lastmod()}</lastmod>
-    <changefreq>${DEFAULT_CHANGEFREQ}</changefreq>
-    <priority>${DEFAULT_PRIORITY}</priority>
-  </url>`)
+    <lastmod>${postLastmod}</lastmod>
+    <changefreq>${chunkId === 'blog' ? 'weekly' : DEFAULT_CHANGEFREQ}</changefreq>
+    <priority>${chunkId === 'blog' ? 0.7 : DEFAULT_PRIORITY}</priority>
+  </url>`
+  })
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset

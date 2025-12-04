@@ -281,7 +281,7 @@ $locationTypeDisplay = $locationTypeLabels[$job['jobLocationType'] ?? ''] ?? ($j
             <div class="bg-white rounded-lg p-6 border border-gray-200">
                 <h3 class="text-lg font-headline font-medium mb-4 text-gray-900">How to Apply</h3>
                 
-                <div class="space-y-3">
+                <div class="space-y-4">
                     <?php
                     // Generate SMS link with prefilled message
                     $smsPhone = '+13147746099';
@@ -292,7 +292,7 @@ $locationTypeDisplay = $locationTypeLabels[$job['jobLocationType'] ?? ''] ?? ($j
                     
                     <!-- Text HR to Apply Button -->
                     <a href="<?= htmlspecialchars($smsLink) ?>" 
-                       class="block w-full bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors text-center font-medium">
+                       class="block w-full bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-colors text-center font-medium">
                         📱 Text HR to Apply
                     </a>
                     
@@ -301,14 +301,14 @@ $locationTypeDisplay = $locationTypeLabels[$job['jobLocationType'] ?? ''] ?? ($j
                         <a href="<?= htmlspecialchars($job['applicationContact']['url']) ?>" 
                            target="_blank" 
                            rel="noopener noreferrer"
-                           class="block w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-center font-medium">
+                           class="block w-full bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors text-center font-medium">
                             Apply Online
                         </a>
                     <?php endif; ?>
                     
                     <!-- Email Resume Button -->
                     <a href="mailto:<?= htmlspecialchars($emailAddress) ?>?subject=Application for <?= urlencode($job['title']) ?>&body=Hi,%0D%0A%0D%0AI am interested in applying for the <?= urlencode($job['title']) ?> position in <?= urlencode($locationDisplay) ?>.%0D%0A%0D%0APlease find my resume attached.%0D%0A%0D%0AThank you," 
-                       class="block w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-center font-medium">
+                       class="block w-full bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors text-center font-medium">
                         Email Resume
                     </a>
                     

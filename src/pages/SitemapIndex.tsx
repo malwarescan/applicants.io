@@ -90,6 +90,19 @@ const SitemapIndex: React.FC = () => {
                   View /sitemaps/category-location.xml →
                 </a>
               </div>
+              
+              <div className="bg-gray-50 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 mb-2">Blog Posts</h3>
+                <p className="text-sm text-gray-600 mb-2">All blog articles and hiring guides</p>
+                <a 
+                  href="/sitemaps/blog.xml" 
+                  className="text-blue-600 hover:text-blue-800 text-sm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View /sitemaps/blog.xml →
+                </a>
+              </div>
             </div>
           </div>
 

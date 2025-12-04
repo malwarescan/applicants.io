@@ -1,10 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { generateSitemapChunk } from '../data/sitemap';
+import { getPublishedPosts } from '../data/blogPosts';
 
 const SitemapChunk: React.FC = () => {
   const { chunkId } = useParams<{ chunkId: string }>();
-  const sitemapXml = chunkId ? generateSitemapChunk(chunkId) : null;
+  const blogPosts = chunkId === 'blog' ? getPublishedPosts() : undefined;
+  const sitemapXml = chunkId ? generateSitemapChunk(chunkId, blogPosts) : null;
 
   if (!sitemapXml) {
     return (
@@ -43,8 +45,11 @@ const SitemapChunk: React.FC = () => {
                 <li>• Chunk ID: <code>{chunkId}</code></li>
                 <li>• URL: <code>https://applicants.io/sitemaps/{chunkId}.xml</code></li>
                 <li>• Last Modified: {new Date().toISOString().slice(0, 10)}</li>
-                <li>• Change Frequency: Daily</li>
-                <li>• Priority: 0.8</li>
+                <li>• Change Frequency: {chunkId === 'blog' ? 'Weekly' : 'Daily'}</li>
+                <li>• Priority: {chunkId === 'blog' ? '0.7' : '0.8'}</li>
+                {chunkId === 'blog' && blogPosts && (
+                  <li>• Total URLs: {blogPosts.length} blog posts</li>
+                )}
               </ul>
             </div>
           </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllIndustries } from '../data/industries';
 import { EnhancedJobService } from '../services/enhancedJobService';
+import { getAllUnifiedJobs, searchUnifiedJobs } from '../services/unifiedJobService';
 import { EnhancedJob, EmploymentType } from '../types/job';
 
 const EnhancedJobSearch: React.FC = () => {
@@ -22,14 +23,21 @@ const EnhancedJobSearch: React.FC = () => {
     const loadJobs = async () => {
       setLoading(true);
       try {
-        const results = EnhancedJobService.searchJobs({
+        // Use unified job service to get all jobs from all sources
+        const results = searchUnifiedJobs({
           search: searchParams.search || undefined,
-          employmentType: searchParams.employmentType || undefined,
           location: searchParams.location || undefined,
           remote: searchParams.remote || undefined,
           industry: searchParams.industry || undefined
         });
-        setJobs(results);
+        
+        // Filter by employment type if specified
+        let filteredResults = results;
+        if (searchParams.employmentType) {
+          filteredResults = results.filter(job => job.employmentType === searchParams.employmentType);
+        }
+        
+        setJobs(filteredResults);
       } catch (error) {
         console.error('Error loading jobs:', error);
         setJobs([]);

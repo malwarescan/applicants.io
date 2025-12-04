@@ -73,6 +73,9 @@ const Navbar = () => {
                   )}
                 </div>
                 
+                <Link to="/blog" className="text-blue-600 hover:underline">
+                  Blog
+                </Link>
                 <Link to="/enhanced-post-job" className="text-blue-600 hover:underline">
                   Post Job
                 </Link>

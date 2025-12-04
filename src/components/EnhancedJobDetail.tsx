@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EnhancedJob } from '../types/job';
 import JobApplicationForm from './JobApplicationForm';
+import JobDescriptionAuthority from './JobDescriptionAuthority';
 
 interface EnhancedJobDetailProps {
   job: EnhancedJob;
@@ -129,43 +130,8 @@ const EnhancedJobDetail: React.FC<EnhancedJobDetailProps> = ({ job }) => {
           )}
         </div>
 
-        {/* Job Description */}
-        <div className="mb-8">
-          <h2 className="text-xl font-headline font-semibold text-gray-900 mb-4">Job Description</h2>
-          <div className="prose prose-gray max-w-none">
-            <p className="text-gray-700 whitespace-pre-line">{job.description}</p>
-          </div>
-        </div>
-
-        {/* Responsibilities */}
-        {job.responsibilities && job.responsibilities.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-xl font-headline font-semibold text-gray-900 mb-4">Key Responsibilities</h2>
-            <ul className="space-y-2">
-              {job.responsibilities.map((responsibility, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-blue-600 mr-2 mt-1">•</span>
-                  <span className="text-gray-700">{responsibility}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Requirements */}
-        {job.requirements && job.requirements.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-xl font-headline font-semibold text-gray-900 mb-4">Requirements</h2>
-            <ul className="space-y-2">
-              {job.requirements.map((requirement, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-blue-600 mr-2 mt-1">•</span>
-                  <span className="text-gray-700">{requirement}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        {/* Authority Page Content - Implements APPLICANTS_CONTENT_AUTHORITY_KERNEL */}
+        <JobDescriptionAuthority job={job} />
 
         {/* Contact Information */}
         <div className="border-t border-gray-200 pt-8">
