@@ -17,27 +17,16 @@ if ($host === 'applicants.io' && strpos($host, 'www.') === false) {
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
 $requestPath = parse_url($requestUri, PHP_URL_PATH);
 
-// Handle sitemaps/*.xml FIRST before checking for static files
+// Handle sitemap.xml FIRST - route to index.php
+if ($requestPath === '/sitemap.xml') {
+    require __DIR__ . '/index.php';
+    exit;
+}
+
+// Handle sitemaps/*.xml FIRST - route to index.php
 if (preg_match('#^/sitemaps/([^/]+\.xml)$#', $requestPath, $matches)) {
-    $file = $matches[1];
-    // Try multiple paths
-    $possiblePaths = [
-        __DIR__ . '/sitemaps/' . $file,
-        __DIR__ . '/../public/sitemaps/' . $file,
-        __DIR__ . '/../dist/sitemaps/' . $file,
-        dirname(__DIR__) . '/public/sitemaps/' . $file,
-        dirname(__DIR__) . '/dist/sitemaps/' . $file,
-    ];
-    
-    foreach ($possiblePaths as $sitemapFile) {
-        if (file_exists($sitemapFile) && is_readable($sitemapFile)) {
-            header('Content-Type: application/xml; charset=utf-8');
-            header('Cache-Control: public, max-age=3600');
-            readfile($sitemapFile);
-            exit;
-        }
-    }
-    // If not found, let index.php handle it (it will generate fallback)
+    require __DIR__ . '/index.php';
+    exit;
 }
 
 // Serve static files directly if they exist

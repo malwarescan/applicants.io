@@ -1,8 +1,10 @@
 RewriteEngine On
 
-# Handle sitemap requests through PHP (so we can generate on-the-fly)
-RewriteRule ^sitemap\.xml$ index.php [L]
-RewriteRule ^sitemaps/.*\.xml$ index.php [L]
+# CRITICAL: Force sitemap requests through PHP FIRST (before any file checks)
+# This MUST come before the standard routing rules
+RewriteCond %{REQUEST_URI} ^/sitemap\.xml$ [OR]
+RewriteCond %{REQUEST_URI} ^/sitemaps/.*\.xml$
+RewriteRule ^(.*)$ index.php [L,QSA]
 
 # Standard routing for other files
 RewriteCond %{REQUEST_FILENAME} !-f
