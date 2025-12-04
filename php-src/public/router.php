@@ -17,30 +17,24 @@ if ($host === 'applicants.io' && strpos($host, 'www.') === false) {
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
 $requestPath = parse_url($requestUri, PHP_URL_PATH);
 
-// Handle sitemap.xml FIRST - route to index.php
-if ($requestPath === '/sitemap.xml') {
+// CRITICAL: Handle sitemap requests FIRST - MUST route to index.php (never serve static XML)
+if ($requestPath === '/sitemap.xml' || preg_match('#^/sitemaps/.*\.xml$#', $requestPath)) {
     require __DIR__ . '/index.php';
     exit;
 }
 
-// Handle sitemaps/*.xml FIRST - route to index.php
-if (preg_match('#^/sitemaps/([^/]+\.xml)$#', $requestPath, $matches)) {
-    require __DIR__ . '/index.php';
-    exit;
-}
-
-// Serve static files directly if they exist
+// Serve static files directly if they exist (BUT NOT sitemap XML files - handled above)
 $filePath = __DIR__ . $requestPath;
 if ($requestPath !== '/' && file_exists($filePath) && is_file($filePath)) {
     // Don't serve PHP files directly (except index.php)
     if (pathinfo($filePath, PATHINFO_EXTENSION) === 'php' && basename($filePath) !== 'index.php') {
         // Let index.php handle it
     } else {
-        // Handle XML files with proper Content-Type
+        // Don't serve sitemap XML files here - they're handled above
         $extension = pathinfo($filePath, PATHINFO_EXTENSION);
-        if ($extension === 'xml') {
-            header('Content-Type: application/xml; charset=utf-8');
-            readfile($filePath);
+        if ($extension === 'xml' && (strpos($requestPath, '/sitemap') === 0 || strpos($requestPath, '/sitemaps/') === 0)) {
+            // This should never happen due to check above, but just in case
+            require __DIR__ . '/index.php';
             exit;
         }
         // Serve other static files (images, CSS, JS, etc.)
