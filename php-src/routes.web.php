@@ -6,7 +6,37 @@ use App\Data;
 require_once __DIR__ . '/includes/redirects.php';
 
 return [
-  // Category routes - must come FIRST before redirect routes
+  // Sitemap routes - MUST come FIRST to ensure proper XML serving
+  '#^/sitemap\.xml$#' => function() {
+    $sitemapFile = __DIR__ . '/public/sitemap.xml';
+    if (file_exists($sitemapFile)) {
+      header('Content-Type: application/xml; charset=utf-8');
+      header('Cache-Control: public, max-age=3600');
+      readfile($sitemapFile);
+      exit;
+    }
+    http_response_code(404);
+    header('Content-Type: application/xml; charset=utf-8');
+    echo '<?xml version="1.0" encoding="UTF-8"?><error><message>Sitemap not found</message></error>';
+    exit;
+  },
+  
+  '#^/sitemaps/(?P<file>[^/]+\.xml)$#' => function($p) {
+    $file = $p['file'] ?? '';
+    $sitemapFile = __DIR__ . '/public/sitemaps/' . $file;
+    if (file_exists($sitemapFile)) {
+      header('Content-Type: application/xml; charset=utf-8');
+      header('Cache-Control: public, max-age=3600');
+      readfile($sitemapFile);
+      exit;
+    }
+    http_response_code(404);
+    header('Content-Type: application/xml; charset=utf-8');
+    echo '<?xml version="1.0" encoding="UTF-8"?><error><message>Sitemap chunk not found</message></error>';
+    exit;
+  },
+  
+  // Category routes - must come before redirect routes
   '#^/jobs/category/(?P<slug>[^/]+)/?$#' => function($p) {
     $slug = $p['slug'] ?? '';
     $industry = str_replace('-', ' ', $slug);
@@ -456,28 +486,6 @@ return [
       exit;
     }
     return ["", "<h1>404 - Not Found</h1>"];
-  },
-  
-  // Serve sitemap files
-  '#^/sitemap\.xml$#' => function() {
-    $sitemapFile = __DIR__ . '/public/sitemap.xml';
-    if (file_exists($sitemapFile)) {
-      header('Content-Type: application/xml');
-      echo file_get_contents($sitemapFile);
-      exit;
-    }
-    return ["", "<h1>404 - Sitemap Not Found</h1>"];
-  },
-  
-  '#^/sitemaps/(?P<file>[^/]+\.xml)$#' => function($p) {
-    $file = $p['file'] ?? '';
-    $sitemapFile = __DIR__ . '/public/sitemaps/' . $file;
-    if (file_exists($sitemapFile)) {
-      header('Content-Type: application/xml');
-      echo file_get_contents($sitemapFile);
-      exit;
-    }
-    return ["", "<h1>404 - Sitemap Not Found</h1>"];
   },
   
   // Serve robots.txt

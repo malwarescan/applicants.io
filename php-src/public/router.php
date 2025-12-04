@@ -24,7 +24,14 @@ if ($requestPath !== '/' && file_exists($filePath) && is_file($filePath)) {
     if (pathinfo($filePath, PATHINFO_EXTENSION) === 'php' && basename($filePath) !== 'index.php') {
         // Let index.php handle it
     } else {
-        // Serve static files (images, CSS, JS, etc.)
+        // Handle XML files with proper Content-Type
+        $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+        if ($extension === 'xml') {
+            header('Content-Type: application/xml; charset=utf-8');
+            readfile($filePath);
+            exit;
+        }
+        // Serve other static files (images, CSS, JS, etc.)
         return false;
     }
 }
