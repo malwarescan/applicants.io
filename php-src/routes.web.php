@@ -7,46 +7,82 @@ require_once __DIR__ . '/includes/redirects.php';
 
 return [
   // Sitemap routes - MUST come FIRST to ensure proper XML serving
+  // Try multiple possible paths to find sitemap files
   '#^/sitemap\.xml$#' => function() {
-    // routes.web.php is in php-src/, so __DIR__ is php-src/
-    $sitemapFile = __DIR__ . '/public/sitemap.xml';
-    // Also try dist/ for production builds
-    if (!file_exists($sitemapFile)) {
-      $sitemapFile = __DIR__ . '/dist/sitemap.xml';
+    // Try all possible locations
+    $possiblePaths = [
+      __DIR__ . '/public/sitemap.xml',           // Development
+      __DIR__ . '/dist/sitemap.xml',              // Production build
+      dirname(__DIR__) . '/public/sitemap.xml',   // Alternative path
+      dirname(__DIR__) . '/dist/sitemap.xml',     // Alternative production
+      $_SERVER['DOCUMENT_ROOT'] . '/sitemap.xml', // Server root
+      $_SERVER['DOCUMENT_ROOT'] . '/public/sitemap.xml',
+      $_SERVER['DOCUMENT_ROOT'] . '/dist/sitemap.xml',
+    ];
+    
+    foreach ($possiblePaths as $sitemapFile) {
+      if (file_exists($sitemapFile) && is_readable($sitemapFile)) {
+        header('Content-Type: application/xml; charset=utf-8');
+        header('Cache-Control: public, max-age=3600');
+        readfile($sitemapFile);
+        exit;
+      }
     }
-    if (file_exists($sitemapFile)) {
-      header('Content-Type: application/xml; charset=utf-8');
-      header('Cache-Control: public, max-age=3600');
-      readfile($sitemapFile);
-      exit;
-    }
-    // Debug: log the attempted path
-    error_log("Sitemap not found. Tried: " . __DIR__ . '/public/sitemap.xml' . " and " . __DIR__ . '/dist/sitemap.xml');
-    http_response_code(404);
+    
+    // If not found, generate on-the-fly as last resort
     header('Content-Type: application/xml; charset=utf-8');
-    echo '<?xml version="1.0" encoding="UTF-8"?><error><message>Sitemap not found</message></error>';
+    http_response_code(200);
+    echo '<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://applicants.io/sitemaps/main.xml</loc>
+    <lastmod>' . date('Y-m-d') . '</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://applicants.io/sitemaps/categories.xml</loc>
+    <lastmod>' . date('Y-m-d') . '</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://applicants.io/sitemaps/locations.xml</loc>
+    <lastmod>' . date('Y-m-d') . '</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://applicants.io/sitemaps/category-location.xml</loc>
+    <lastmod>' . date('Y-m-d') . '</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://applicants.io/sitemaps/blog.xml</loc>
+    <lastmod>' . date('Y-m-d') . '</lastmod>
+  </sitemap>
+</sitemapindex>';
     exit;
   },
   
   '#^/sitemaps/(?P<file>[^/]+\.xml)$#' => function($p) {
     $file = $p['file'] ?? '';
-    // routes.web.php is in php-src/, so __DIR__ is php-src/
-    $sitemapFile = __DIR__ . '/public/sitemaps/' . $file;
-    // Also try dist/ for production builds
-    if (!file_exists($sitemapFile)) {
-      $sitemapFile = __DIR__ . '/dist/sitemaps/' . $file;
+    // Try all possible locations
+    $possiblePaths = [
+      __DIR__ . '/public/sitemaps/' . $file,
+      __DIR__ . '/dist/sitemaps/' . $file,
+      dirname(__DIR__) . '/public/sitemaps/' . $file,
+      dirname(__DIR__) . '/dist/sitemaps/' . $file,
+      $_SERVER['DOCUMENT_ROOT'] . '/sitemaps/' . $file,
+      $_SERVER['DOCUMENT_ROOT'] . '/public/sitemaps/' . $file,
+      $_SERVER['DOCUMENT_ROOT'] . '/dist/sitemaps/' . $file,
+    ];
+    
+    foreach ($possiblePaths as $sitemapFile) {
+      if (file_exists($sitemapFile) && is_readable($sitemapFile)) {
+        header('Content-Type: application/xml; charset=utf-8');
+        header('Cache-Control: public, max-age=3600');
+        readfile($sitemapFile);
+        exit;
+      }
     }
-    if (file_exists($sitemapFile)) {
-      header('Content-Type: application/xml; charset=utf-8');
-      header('Cache-Control: public, max-age=3600');
-      readfile($sitemapFile);
-      exit;
-    }
-    // Debug: log the attempted path
-    error_log("Sitemap chunk not found. Tried: " . __DIR__ . '/public/sitemaps/' . $file . " and " . __DIR__ . '/dist/sitemaps/' . $file);
+    
     http_response_code(404);
     header('Content-Type: application/xml; charset=utf-8');
-    echo '<?xml version="1.0" encoding="UTF-8"?><error><message>Sitemap chunk not found</message></error>';
+    echo '<?xml version="1.0" encoding="UTF-8"?><error><message>Sitemap chunk not found: ' . htmlspecialchars($file) . '</message></error>';
     exit;
   },
   
