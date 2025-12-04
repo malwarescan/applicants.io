@@ -9,7 +9,8 @@
     "start": "cd php-src/public && php -S 0.0.0.0:3000",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preview": "npx vite preview",
-    "generate-sitemap": "node scripts/generate-sitemap-simple.js",
+    "generate-sitemap": "node scripts/generate-sitemap-with-blog.js",
+    "prebuild": "npm run generate-sitemap",
     "dev:css": "tailwindcss -i ./css/input.css -o ./php-src/public/assets/styles.css --watch",
     "build:css": "tailwindcss -i ./css/input.css -o ./php-src/public/assets/styles.css --minify"
   },

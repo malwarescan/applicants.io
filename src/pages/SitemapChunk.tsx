@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { generateSitemapChunk } from '../data/sitemap';
 import { getPublishedPosts } from '../data/blogPosts';
@@ -7,6 +7,20 @@ const SitemapChunk: React.FC = () => {
   const { chunkId } = useParams<{ chunkId: string }>();
   const blogPosts = chunkId === 'blog' ? getPublishedPosts() : undefined;
   const sitemapXml = chunkId ? generateSitemapChunk(chunkId, blogPosts) : null;
+
+  // If this is a direct request for XML, return raw XML
+  useEffect(() => {
+    if (sitemapXml && window.location.pathname.endsWith('.xml')) {
+      // Set content type to XML
+      document.contentType = 'application/xml';
+      
+      // Replace entire document with XML
+      document.open();
+      document.write(sitemapXml);
+      document.close();
+      return;
+    }
+  }, [sitemapXml]);
 
   if (!sitemapXml) {
     return (

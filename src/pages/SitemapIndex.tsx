@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { generateSitemapIndex } from '../data/sitemap';
 
 const SitemapIndex: React.FC = () => {
   const sitemapXml = generateSitemapIndex();
 
+  // If this is a direct request for XML (not HTML), return raw XML
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path === '/sitemap.xml' || path.endsWith('.xml')) {
+      // Set content type to XML
+      document.contentType = 'application/xml';
+      
+      // Replace entire document with XML
+      document.open();
+      document.write(sitemapXml);
+      document.close();
+      return;
+    }
+  }, [sitemapXml]);
+
+  // For HTML view (when accessing /sitemap)
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-4xl mx-auto px-6">
