@@ -60,6 +60,8 @@ return [
   
   '#^/sitemaps/(?P<file>[^/]+\.xml)$#' => function($p) {
     $file = $p['file'] ?? '';
+    $chunkId = str_replace('.xml', '', $file);
+    
     // Try all possible locations
     $possiblePaths = [
       __DIR__ . '/public/sitemaps/' . $file,
@@ -79,6 +81,129 @@ return [
         exit;
       }
     }
+    
+    // Generate on-the-fly if file not found - MUST MATCH index.php EXACTLY
+    header('Content-Type: application/xml; charset=utf-8');
+    http_response_code(200);
+    
+    $base = 'https://applicants.io';
+    $now = date('Y-m-d');
+    
+    // Define URLs for each chunk type - MUST MATCH src/data/sitemap.ts EXACTLY
+    $chunkUrls = [
+        'main' => [
+            $base . '/',
+            $base . '/jobs',
+            $base . '/enhanced-jobs',
+            $base . '/enhanced-post-job',
+            $base . '/contact',
+            $base . '/blog',
+        ],
+        'categories' => [
+            $base . '/jobs/category/software-engineer',
+            $base . '/jobs/category/marketing-manager',
+            $base . '/jobs/category/registered-nurse',
+            $base . '/jobs/category/sales-representative',
+            $base . '/jobs/category/data-analyst',
+            $base . '/jobs/category/customer-service',
+            $base . '/jobs/category/project-manager',
+            $base . '/jobs/category/accountant',
+            $base . '/jobs/category/human-resources',
+            $base . '/jobs/category/operations-manager',
+            $base . '/jobs/category/graphic-designer',
+            $base . '/jobs/category/content-writer',
+            $base . '/jobs/category/software-developer',
+            $base . '/jobs/category/business-analyst',
+            $base . '/jobs/category/administrative-assistant',
+            $base . '/jobs/category/financial-analyst',
+            $base . '/jobs/category/quality-assurance',
+            $base . '/jobs/category/network-administrator',
+            $base . '/jobs/category/digital-marketing',
+            $base . '/jobs/category/executive-assistant',
+            $base . '/jobs/category/healthcare-administrator',
+        ],
+        'locations' => [
+            $base . '/jobs/florida/',
+            $base . '/jobs/florida/miami/',
+            $base . '/jobs/florida/orlando/',
+            $base . '/jobs/florida/tampa/',
+            $base . '/jobs/florida/jacksonville/',
+            $base . '/jobs/texas/',
+            $base . '/jobs/texas/austin/',
+            $base . '/jobs/texas/houston/',
+            $base . '/jobs/texas/dallas/',
+            $base . '/jobs/texas/san-antonio/',
+            $base . '/jobs/california/',
+            $base . '/jobs/california/san-francisco/',
+            $base . '/jobs/california/los-angeles/',
+            $base . '/jobs/california/san-diego/',
+            $base . '/jobs/california/sacramento/',
+            $base . '/jobs/new-york/',
+            $base . '/jobs/new-york/new-york-city/',
+            $base . '/jobs/new-york/albany/',
+            $base . '/jobs/new-york/buffalo/',
+            $base . '/jobs/remote/',
+        ],
+        'category-location' => [
+            $base . '/jobs/florida/miami/software-engineer/',
+            $base . '/jobs/florida/orlando/marketing-manager/',
+            $base . '/jobs/florida/tampa/registered-nurse/',
+            $base . '/jobs/florida/jacksonville/sales-representative/',
+            $base . '/jobs/texas/austin/software-engineer/',
+            $base . '/jobs/texas/houston/marketing-manager/',
+            $base . '/jobs/texas/dallas/registered-nurse/',
+            $base . '/jobs/texas/san-antonio/sales-representative/',
+            $base . '/jobs/california/san-francisco/software-engineer/',
+            $base . '/jobs/california/los-angeles/marketing-manager/',
+            $base . '/jobs/california/san-diego/registered-nurse/',
+            $base . '/jobs/california/sacramento/sales-representative/',
+            $base . '/jobs/new-york/new-york-city/software-engineer/',
+            $base . '/jobs/new-york/new-york-city/marketing-manager/',
+            $base . '/jobs/new-york/new-york-city/registered-nurse/',
+            $base . '/jobs/new-york/new-york-city/sales-representative/',
+            $base . '/jobs/remote/software-engineer/',
+            $base . '/jobs/remote/marketing-manager/',
+            $base . '/jobs/remote/data-analyst/',
+            $base . '/jobs/remote/customer-service/',
+        ],
+        'blog' => [
+            $base . '/how-to-hire/retail-cashier',
+            $base . '/how-to-hire/software-developer',
+            $base . '/how-to-hire/registered-nurse',
+            $base . '/how-to-hire/customer-service-representative',
+            $base . '/compensation/retail-cashier-salary',
+            $base . '/compensation/software-developer-salary',
+            $base . '/compensation/registered-nurse-salary',
+            $base . '/compensation/customer-service-representative-salary',
+            $base . '/interview-questions/retail-cashier',
+            $base . '/interview-questions/software-developer',
+            $base . '/interview-questions/registered-nurse',
+            $base . '/interview-questions/customer-service-representative',
+            $base . '/hr/what-does-retail-cashier-do',
+            $base . '/hr/what-does-software-developer-do',
+            $base . '/hr/what-does-registered-nurse-do',
+            $base . '/hr/what-does-customer-service-representative-do',
+            $base . '/hr/how-to-write-retail-cashier-job-description',
+            $base . '/hr/how-to-write-software-developer-job-description',
+            $base . '/hr/how-to-write-registered-nurse-job-description',
+            $base . '/hr/how-to-write-customer-service-representative-job-description',
+        ],
+    ];
+    
+    $urls = $chunkUrls[$chunkId] ?? [];
+    
+    echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+    echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+    foreach ($urls as $url) {
+        echo "  <url>\n";
+        echo "    <loc>" . htmlspecialchars($url, ENT_XML1) . "</loc>\n";
+        echo "    <lastmod>$now</lastmod>\n";
+        echo "    <changefreq>" . ($chunkId === 'blog' ? 'weekly' : 'daily') . "</changefreq>\n";
+        echo "    <priority>" . ($chunkId === 'blog' ? '0.7' : '0.8') . "</priority>\n";
+        echo "  </url>\n";
+    }
+    echo '</urlset>';
+    exit;
     
     http_response_code(404);
     header('Content-Type: application/xml; charset=utf-8');
