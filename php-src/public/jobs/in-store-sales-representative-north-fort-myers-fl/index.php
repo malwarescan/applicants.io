@@ -29,8 +29,8 @@ $jsonLd = generate_jobposting_schema($job);
     'job' => $job,
     'canonical' => '/jobs/' . $slug . '/',
 ], [
-    'title' => $job['title'] . ' in ' . $job['location'] . ' | Applicants.io',
-    'desc' => substr(strip_tags($job['description']), 0, 160) . '...',
+    'title' => $job['title'] . ' in ' . ($job['location'] ?? '') . ' | Applicants.io',
+    'desc' => substr(strip_tags($job['description'] ?? ''), 0, 160) . '...',
     'canonical' => '/jobs/' . $slug . '/',
     'jsonld' => $jsonLd,
 ]);

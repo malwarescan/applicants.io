@@ -75,8 +75,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -133,8 +132,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -191,8 +189,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -249,8 +246,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -307,8 +303,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -365,8 +360,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -423,8 +417,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -481,8 +474,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -539,8 +531,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -597,8 +588,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -655,8 +645,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -713,8 +702,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -771,8 +759,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -829,8 +816,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -887,8 +873,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -945,8 +930,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1003,8 +987,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1061,8 +1044,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1119,8 +1101,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1177,8 +1158,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1235,8 +1215,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1293,8 +1272,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1351,8 +1329,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1409,8 +1386,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1467,8 +1443,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1525,8 +1500,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1582,8 +1556,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1639,8 +1612,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1696,8 +1668,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1753,8 +1724,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1810,8 +1780,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1867,8 +1836,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1924,8 +1892,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -1981,8 +1948,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2038,8 +2004,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2095,8 +2060,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2152,8 +2116,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2209,8 +2172,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2266,8 +2228,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2324,8 +2285,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2382,8 +2342,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2440,8 +2399,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2498,8 +2456,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2556,8 +2513,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2614,8 +2570,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2672,8 +2627,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2730,8 +2684,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2788,8 +2741,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2846,8 +2798,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2904,8 +2855,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -2962,8 +2912,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3020,8 +2969,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3078,8 +3026,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3136,8 +3083,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3194,8 +3140,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3252,8 +3197,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3310,8 +3254,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3368,8 +3311,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3426,8 +3368,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3484,8 +3425,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3542,8 +3482,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3600,8 +3539,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3658,8 +3596,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3716,8 +3653,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3774,8 +3710,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3831,8 +3766,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3888,8 +3822,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -3945,8 +3878,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4002,8 +3934,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4059,8 +3990,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4116,8 +4046,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4173,8 +4102,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4230,8 +4158,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4287,8 +4214,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4344,8 +4270,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4401,8 +4326,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4458,8 +4382,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4515,8 +4438,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4573,8 +4495,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4631,8 +4552,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4689,8 +4609,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4747,8 +4666,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4805,8 +4723,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4863,8 +4780,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4921,8 +4837,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -4979,8 +4894,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5037,8 +4951,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5095,8 +5008,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5153,8 +5065,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5211,8 +5122,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5269,8 +5179,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5326,8 +5235,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5383,8 +5291,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5440,8 +5347,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5497,8 +5403,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5554,8 +5459,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5611,8 +5515,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5668,8 +5571,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5725,8 +5627,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5782,8 +5683,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5839,8 +5739,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5896,8 +5795,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -5953,8 +5851,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6010,8 +5907,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6067,8 +5963,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6124,8 +6019,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6181,8 +6075,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6238,8 +6131,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6295,8 +6187,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6352,8 +6243,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6409,8 +6299,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6466,8 +6355,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6523,8 +6411,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6580,8 +6467,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6637,8 +6523,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6694,8 +6579,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6751,8 +6635,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6809,8 +6692,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6867,8 +6749,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6925,8 +6806,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -6983,8 +6863,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7041,8 +6920,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7099,8 +6977,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7157,8 +7034,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7215,8 +7091,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7273,8 +7148,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7331,8 +7205,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7389,8 +7262,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7447,8 +7319,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7505,8 +7376,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7562,8 +7432,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7619,8 +7488,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7676,8 +7544,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7733,8 +7600,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7790,8 +7656,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7847,8 +7712,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7904,8 +7768,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -7961,8 +7824,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8018,8 +7880,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8075,8 +7936,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8132,8 +7992,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8189,8 +8048,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8246,8 +8104,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8303,8 +8160,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8360,8 +8216,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8417,8 +8272,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8474,8 +8328,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8531,8 +8384,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8588,8 +8440,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8645,8 +8496,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8702,8 +8552,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8759,8 +8608,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8816,8 +8664,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8873,8 +8720,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8930,8 +8776,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -8987,8 +8832,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9044,8 +8888,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9101,8 +8944,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9158,8 +9000,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9215,8 +9056,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9272,8 +9112,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9329,8 +9168,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9386,8 +9224,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9443,8 +9280,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9500,8 +9336,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9557,8 +9392,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9614,8 +9448,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9671,8 +9504,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9728,8 +9560,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9785,8 +9616,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9842,8 +9672,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9899,8 +9728,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -9956,8 +9784,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10013,8 +9840,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10070,8 +9896,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10127,8 +9952,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10184,8 +10008,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10241,8 +10064,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10298,8 +10120,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10355,8 +10176,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10412,8 +10232,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10469,8 +10288,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10526,8 +10344,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10583,8 +10400,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10640,8 +10456,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10697,8 +10512,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10754,8 +10568,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10811,8 +10624,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10868,8 +10680,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10925,8 +10736,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -10982,8 +10792,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11039,8 +10848,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11096,8 +10904,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11153,8 +10960,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11210,8 +11016,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11267,8 +11072,7 @@
             {
                 "city": "Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33901"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11324,8 +11128,7 @@
             {
                 "city": "Naples",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34101"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11381,8 +11184,7 @@
             {
                 "city": "Cape Coral",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33904"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11438,8 +11240,7 @@
             {
                 "city": "Bonita Springs",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34134"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11495,8 +11296,7 @@
             {
                 "city": "Estero",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33928"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11552,8 +11352,7 @@
             {
                 "city": "Lehigh Acres",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33936"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11609,8 +11408,7 @@
             {
                 "city": "Punta Gorda",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33950"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11666,8 +11464,7 @@
             {
                 "city": "Port Charlotte",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33948"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11723,8 +11520,7 @@
             {
                 "city": "Sanibel",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33957"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11780,8 +11576,7 @@
             {
                 "city": "Marco Island",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34145"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11837,8 +11632,7 @@
             {
                 "city": "North Fort Myers",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33903"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11894,8 +11688,7 @@
             {
                 "city": "Labelle",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "33935"
+                "country": "US"
             }
         ],
         "baseSalary": {
@@ -11951,8 +11744,7 @@
             {
                 "city": "Immokalee",
                 "region": "FL",
-                "country": "US",
-                "postalCode": "34142"
+                "country": "US"
             }
         ],
         "baseSalary": {
