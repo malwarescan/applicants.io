@@ -4,17 +4,23 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '/';
 
 // Direct sitemap.xml handling - CHECK FIRST BEFORE ANYTHING ELSE
 if ($uri === '/sitemap.xml') {
-    // Try all possible paths
+    // Try all possible paths - including DOCUMENT_ROOT
+    $docRoot = $_SERVER['DOCUMENT_ROOT'] ?? __DIR__;
     $possiblePaths = [
         __DIR__ . '/sitemap.xml',                    // Current directory (dist/)
         __DIR__ . '/../public/sitemap.xml',          // php-src/public/
         __DIR__ . '/../dist/sitemap.xml',            // php-src/dist/
         dirname(__DIR__) . '/public/sitemap.xml',    // Alternative
         dirname(__DIR__) . '/dist/sitemap.xml',      // Alternative dist
+        $docRoot . '/sitemap.xml',                   // Document root
+        $docRoot . '/public/sitemap.xml',            // Document root/public
+        $docRoot . '/dist/sitemap.xml',              // Document root/dist
+        dirname($docRoot) . '/public/sitemap.xml',   // Parent/public
+        dirname($docRoot) . '/dist/sitemap.xml',     // Parent/dist
     ];
     
     foreach ($possiblePaths as $sitemapFile) {
-        if (file_exists($sitemapFile) && is_readable($sitemapFile)) {
+        if ($sitemapFile && file_exists($sitemapFile) && is_readable($sitemapFile)) {
             header('Content-Type: application/xml; charset=utf-8');
             header('Cache-Control: public, max-age=3600');
             readfile($sitemapFile);
@@ -22,16 +28,17 @@ if ($uri === '/sitemap.xml') {
         }
     }
     
-    // Generate on-the-fly if file not found
+    // ALWAYS generate on-the-fly - don't rely on static files on production
     header('Content-Type: application/xml; charset=utf-8');
     http_response_code(200);
+    $now = date('Y-m-d');
     echo '<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap><loc>https://applicants.io/sitemaps/main.xml</loc><lastmod>' . date('Y-m-d') . '</lastmod></sitemap>
-  <sitemap><loc>https://applicants.io/sitemaps/categories.xml</loc><lastmod>' . date('Y-m-d') . '</lastmod></sitemap>
-  <sitemap><loc>https://applicants.io/sitemaps/locations.xml</loc><lastmod>' . date('Y-m-d') . '</lastmod></sitemap>
-  <sitemap><loc>https://applicants.io/sitemaps/category-location.xml</loc><lastmod>' . date('Y-m-d') . '</lastmod></sitemap>
-  <sitemap><loc>https://applicants.io/sitemaps/blog.xml</loc><lastmod>' . date('Y-m-d') . '</lastmod></sitemap>
+  <sitemap><loc>https://applicants.io/sitemaps/main.xml</loc><lastmod>' . $now . '</lastmod></sitemap>
+  <sitemap><loc>https://applicants.io/sitemaps/categories.xml</loc><lastmod>' . $now . '</lastmod></sitemap>
+  <sitemap><loc>https://applicants.io/sitemaps/locations.xml</loc><lastmod>' . $now . '</lastmod></sitemap>
+  <sitemap><loc>https://applicants.io/sitemaps/category-location.xml</loc><lastmod>' . $now . '</lastmod></sitemap>
+  <sitemap><loc>https://applicants.io/sitemaps/blog.xml</loc><lastmod>' . $now . '</lastmod></sitemap>
 </sitemapindex>';
     exit;
 }

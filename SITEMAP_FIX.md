@@ -71,3 +71,4 @@ After deployment:
 3. Should show "URL is on Google" or at least "URL is available to Google"
 4. Submit sitemap in GSC
 
+
