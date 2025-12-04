@@ -20,10 +20,24 @@ class Build {
     }
     // Copy /public assets (excluding PHP files and JSON files)
     self::copyDir(__DIR__ . '/../public', __DIR__ . '/../dist', ['.php', '.json']);
-    // Optional: write a basic sitemap
-    $urls = array_map(fn($e) => $e[0], $map);
-    $sitemap = self::sitemap($urls);
-    file_put_contents(__DIR__ . '/../dist/sitemap.xml', $sitemap);
+    
+    // Copy sitemap files - use generated sitemap if it exists, otherwise create basic one
+    $generatedSitemap = __DIR__ . '/../public/sitemap.xml';
+    if (file_exists($generatedSitemap)) {
+      // Use our generated sitemap (from npm run generate-sitemap)
+      copy($generatedSitemap, __DIR__ . '/../dist/sitemap.xml');
+    } else {
+      // Fallback: write a basic sitemap
+      $urls = array_map(fn($e) => $e[0], $map);
+      $sitemap = self::sitemap($urls);
+      file_put_contents(__DIR__ . '/../dist/sitemap.xml', $sitemap);
+    }
+    
+    // Copy sitemaps directory if it exists
+    $sitemapsDir = __DIR__ . '/../public/sitemaps';
+    if (is_dir($sitemapsDir)) {
+      self::copyDir($sitemapsDir, __DIR__ . '/../dist/sitemaps', ['.php', '.json']);
+    }
   }
   private static function copyDir(string $src, string $dst, array $exclude = []): void {
     if (!is_dir($src)) return;
