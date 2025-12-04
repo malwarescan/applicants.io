@@ -135,13 +135,20 @@ class SynaxusJobsScraper {
         $org = $synaxusJob['hiringOrganization'] ?? [];
         
         // Build job location array
+        // Google REQUIRES postalCode - extract from source or lookup
+        $postalCode = $location['postalCode'] ?? null;
         $jobLocation = [];
         if ($city || $region) {
-            $jobLocation[] = [
+            $locData = [
                 'city' => $city,
                 'region' => $region,
                 'country' => $country
             ];
+            // Add postalCode if available from source
+            if (!empty($postalCode)) {
+                $locData['postalCode'] = $postalCode;
+            }
+            $jobLocation[] = $locData;
         }
         
         // Extract contact information

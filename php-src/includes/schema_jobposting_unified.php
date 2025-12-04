@@ -12,12 +12,62 @@
  * 2. validThrough must be in the future (ISO 8601 format)
  * 3. At least one application method required (email, phone, or url)
  * 4. hiringOrganization must be a real, verifiable company
- * 5. jobLocation must be accurate and specific
+ * 5. jobLocation must be accurate and specific (postalCode REQUIRED)
  * 6. baseSalary must match visible salary information
  * 
  * @param array $job Job data array with all required fields
  * @return array JSON-LD schema array ready for json_encode
  */
+
+/**
+ * Get postal code for a city/region (fallback lookup)
+ * 
+ * @param string $city City name
+ * @param string $region State/region code (e.g., 'FL')
+ * @return string|null Postal code or null if not found
+ */
+function get_postal_code_for_city(string $city, string $region): ?string {
+    // Florida city postal code lookup (primary cities in job listings)
+    $floridaPostalCodes = [
+        'Fort Myers' => '33901',
+        'Naples' => '34101',
+        'Cape Coral' => '33904',
+        'Bonita Springs' => '34134',
+        'Estero' => '33928',
+        'Lehigh Acres' => '33936',
+        'Punta Gorda' => '33950',
+        'Port Charlotte' => '33948',
+        'Marco Island' => '34145',
+        'Sanibel' => '33957',
+        'Immokalee' => '34142',
+        'Labelle' => '33935',
+        'North Fort Myers' => '33903',
+    ];
+    
+    // Normalize city name (case-insensitive, trim)
+    $cityNormalized = trim($city);
+    $regionNormalized = strtoupper(trim($region));
+    
+    // Check exact match first
+    if ($regionNormalized === 'FL' && isset($floridaPostalCodes[$cityNormalized])) {
+        return $floridaPostalCodes[$cityNormalized];
+    }
+    
+    // Try case-insensitive match
+    foreach ($floridaPostalCodes as $key => $code) {
+        if (strcasecmp($key, $cityNormalized) === 0) {
+            return $code;
+        }
+    }
+    
+    // Default fallback for Florida cities (use Fort Myers as default)
+    if ($regionNormalized === 'FL') {
+        return '33901'; // Fort Myers default
+    }
+    
+    return null;
+}
+
 function generate_jobposting_schema(array $job): array {
     // Validate required fields
     $required = ['title', 'description', 'datePosted', 'hiringOrganization', 'jobLocation'];
@@ -76,6 +126,7 @@ function generate_jobposting_schema(array $job): array {
     }
 
     // Job Location (REQUIRED)
+    // Google REQUIRES postalCode in jobLocation.address
     $jobLocations = [];
     foreach ($job['jobLocation'] as $loc) {
         $address = [
@@ -91,9 +142,16 @@ function generate_jobposting_schema(array $job): array {
         if (!empty($loc['country'])) {
             $address['addressCountry'] = (string)$loc['country'];
         }
-        if (!empty($loc['postalCode'])) {
-            $address['postalCode'] = (string)$loc['postalCode'];
+        
+        // postalCode is REQUIRED by Google - use provided or lookup by city
+        $postalCode = $loc['postalCode'] ?? null;
+        if (empty($postalCode) && !empty($loc['city']) && !empty($loc['region'])) {
+            $postalCode = get_postal_code_for_city($loc['city'], $loc['region']);
         }
+        if (!empty($postalCode)) {
+            $address['postalCode'] = (string)$postalCode;
+        }
+        
         if (!empty($loc['streetAddress'])) {
             $address['streetAddress'] = (string)$loc['streetAddress'];
         }

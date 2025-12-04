@@ -47,16 +47,31 @@ function sx_schema_jobposting(array $job): void {
   $org = $job['hiringOrganization'] ?? [];
 
   // Build jobLocation array
+  // Google REQUIRES postalCode in jobLocation.address
   $jobLocation = [];
   foreach ($jloc as $p) {
+    $address = [
+      "@type" => "PostalAddress",
+      "addressLocality" => (string)($p['city'] ?? ''),
+      "addressRegion"   => (string)($p['region'] ?? ''),
+      "addressCountry"  => (string)($p['country'] ?? '')
+    ];
+    
+    // postalCode is REQUIRED by Google - use provided or lookup
+    $postalCode = $p['postalCode'] ?? null;
+    if (empty($postalCode) && !empty($p['city']) && !empty($p['region'])) {
+      // Try to get postal code from lookup function if available
+      if (function_exists('get_postal_code_for_city')) {
+        $postalCode = get_postal_code_for_city($p['city'], $p['region']);
+      }
+    }
+    if (!empty($postalCode)) {
+      $address['postalCode'] = (string)$postalCode;
+    }
+    
     $jobLocation[] = [
       "@type" => "Place",
-      "address" => [
-        "@type" => "PostalAddress",
-        "addressLocality" => (string)($p['city'] ?? ''),
-        "addressRegion"   => (string)($p['region'] ?? ''),
-        "addressCountry"  => (string)($p['country'] ?? '')
-      ]
+      "address" => $address
     ];
   }
 

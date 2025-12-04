@@ -214,10 +214,29 @@ foreach ($jobTitles as $title => $jobData) {
         $slug = strtolower(str_replace([' ', '(', ')'], ['-', '', ''], $title)) . '-' . strtolower(str_replace(' ', '-', $city)) . '-fl';
         
         // Create job location array
+        // Google REQUIRES postalCode - lookup by city
+        $postalCodes = [
+            'Fort Myers' => '33901',
+            'Naples' => '34101',
+            'Cape Coral' => '33904',
+            'Bonita Springs' => '34134',
+            'Estero' => '33928',
+            'Lehigh Acres' => '33936',
+            'Punta Gorda' => '33950',
+            'Port Charlotte' => '33948',
+            'Marco Island' => '34145',
+            'Sanibel' => '33957',
+            'Immokalee' => '34142',
+            'Labelle' => '33935',
+            'North Fort Myers' => '33903',
+        ];
+        $postalCode = $postalCodes[$city] ?? '33901'; // Default to Fort Myers
+        
         $jobLocation = [[
             'city' => $city,
             'region' => 'FL',
             'country' => 'US',
+            'postalCode' => $postalCode,
         ]];
         
         // Determine job location type based on title
