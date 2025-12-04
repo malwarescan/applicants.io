@@ -4,6 +4,17 @@
  * This ensures all requests go through index.php
  */
 
+// CRITICAL: Handle sitemap requests FIRST - BEFORE ANYTHING ELSE
+$requestUri = $_SERVER['REQUEST_URI'] ?? '/';
+$requestPath = parse_url($requestUri, PHP_URL_PATH);
+
+if ($requestPath === '/sitemap.xml' || preg_match('#^/sitemaps/.*\.xml$#', $requestPath)) {
+    // Route directly to index.php - it will generate on-the-fly
+    $_SERVER['REQUEST_URI'] = $requestPath; // Ensure URI is set
+    require __DIR__ . '/index.php';
+    exit;
+}
+
 // Handle www redirects (ensure consistency)
 $host = $_SERVER['HTTP_HOST'] ?? '';
 if ($host === 'applicants.io' && strpos($host, 'www.') === false) {
@@ -14,14 +25,6 @@ if ($host === 'applicants.io' && strpos($host, 'www.') === false) {
 }
 
 // If the requested file exists and is not index.php, serve it directly
-$requestUri = $_SERVER['REQUEST_URI'] ?? '/';
-$requestPath = parse_url($requestUri, PHP_URL_PATH);
-
-// CRITICAL: Handle sitemap requests FIRST - MUST route to index.php (never serve static XML)
-if ($requestPath === '/sitemap.xml' || preg_match('#^/sitemaps/.*\.xml$#', $requestPath)) {
-    require __DIR__ . '/index.php';
-    exit;
-}
 
 // Serve static files directly if they exist (BUT NOT sitemap XML files - handled above)
 $filePath = __DIR__ . $requestPath;
