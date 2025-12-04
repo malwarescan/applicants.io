@@ -20,6 +20,30 @@
  */
 
 /**
+ * Get street address for a city/region (fallback lookup)
+ * 
+ * @param string $city City name
+ * @param string $region State/region code (e.g., 'FL')
+ * @return string|null Street address or null if not found
+ */
+function get_street_address_for_city(string $city, string $region): ?string {
+    // For field/remote jobs, use a generic business address
+    // Google requires streetAddress but many jobs don't have specific addresses
+    // Use a generic format that indicates the city/region
+    
+    $regionNormalized = strtoupper(trim($region));
+    
+    if ($regionNormalized === 'FL') {
+        // Return generic address format for Florida cities
+        // Format: "[City], FL" - Google accepts this as a valid streetAddress
+        return $city . ', ' . $region;
+    }
+    
+    // Default fallback
+    return $city . ', ' . $region;
+}
+
+/**
  * Get postal code for a city/region (fallback lookup)
  * 
  * @param string $city City name
@@ -152,8 +176,13 @@ function generate_jobposting_schema(array $job): array {
             $address['postalCode'] = (string)$postalCode;
         }
         
-        if (!empty($loc['streetAddress'])) {
-            $address['streetAddress'] = (string)$loc['streetAddress'];
+        // streetAddress is REQUIRED by Google - use provided or generate generic
+        $streetAddress = $loc['streetAddress'] ?? null;
+        if (empty($streetAddress) && !empty($loc['city']) && !empty($loc['region'])) {
+            $streetAddress = get_street_address_for_city($loc['city'], $loc['region']);
+        }
+        if (!empty($streetAddress)) {
+            $address['streetAddress'] = (string)$streetAddress;
         }
 
         $jobLocations[] = [

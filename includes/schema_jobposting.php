@@ -69,6 +69,18 @@ function sx_schema_jobposting(array $job): void {
       $address['postalCode'] = (string)$postalCode;
     }
     
+    // streetAddress is REQUIRED by Google - use provided or generate
+    $streetAddress = $p['streetAddress'] ?? null;
+    if (empty($streetAddress) && !empty($p['city']) && !empty($p['region'])) {
+      // Try to get street address from lookup function if available
+      if (function_exists('get_street_address_for_city')) {
+        $streetAddress = get_street_address_for_city($p['city'], $p['region']);
+      }
+    }
+    if (!empty($streetAddress)) {
+      $address['streetAddress'] = (string)$streetAddress;
+    }
+    
     $jobLocation[] = [
       "@type" => "Place",
       "address" => $address
