@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.mesh-surface { @apply bg-ai-mesh blur-2xl opacity-70; }
+.glass { @apply backdrop-blur-md bg-white/5 border border-white/10; }
+.card { @apply rounded-xl border border-white/10 bg-black/20; }
